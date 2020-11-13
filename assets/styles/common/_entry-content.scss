@@ -6,51 +6,20 @@
   h5,
   h6,
   .faux-heading {
-    font-feature-settings: "lnum";
-    font-variant-numeric: lining-nums;
-    font-weight: 700;
-    letter-spacing: -0.0415625em;
-    line-height: 1.25;
-    margin: 3.5rem 0 2rem;
+    @include smart-prop('margin-top', sct-m);
+    @include smart-prop('margin-bottom', sct-m-small);
   }
-
-  h1,
-  .heading-size-1 {
-    font-size: 3.6rem;
-    font-weight: 800;
-    line-height: 1.138888889;
-  }
-
-  h2,
-  .heading-size-2 {
-    font-size: 3.2rem;
-  }
-
-  h3,
-  .heading-size-3 {
-    font-size: 2.8rem;
-  }
-
-  h4,
-  .heading-size-4 {
-    font-size: 2.4rem;
-  }
-
-  h5,
-  .heading-size-5 {
-    font-size: 2.1rem;
-  }
-
-  h6,
-  .heading-size-6 {
-    font-size: 1.6rem;
-    letter-spacing: 0.03125em;
-    text-transform: uppercase;
-  }
-
+  
   p {
     line-height: 1.5;
     margin: 0 0 1em 0;
+    
+    &:first-child{
+      @include smart-prop('margin-top', sct-m);
+    }
+    &:last-child{
+      @include smart-prop('margin-bottom', sct-m);
+    }
   }
 
   em,

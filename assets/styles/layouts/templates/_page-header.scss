@@ -1,0 +1,6 @@
+.page-header{
+  height: 300px;
+  background-color: $background;
+  @include quickflex(row, center, center, nowrap);
+  text-align: center;
+}

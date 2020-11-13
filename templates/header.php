@@ -26,12 +26,4 @@
 
   <?php get_template_part( 'templates/mobile-menu' ); ?>
   
-  <?php
-  get_partial(
-    'templates/breadcrumbs/breadcrumbs',
-    array(
-      'show_home' => true,
-    )
-  );
-  ?>
 </header>

@@ -14,12 +14,15 @@ $red: #CF112E;
 $red-dark: #951024;
 $green: #147724;
 
+$grey-300: #ECEDEE;
+
 $primary: $red !default;
 $secondary: $green !default;
 
 $text: #1F1E1E;
 $text-light: #272727;
 
+$background: $grey-300;
 $borders: #EDEDED;
 $separators: #6d6d6d;
 $focus-outline: $primary;
