@@ -106,7 +106,7 @@ function display_sidebar() {
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100 );
 function assets() {
 
-  wp_enqueue_style( 'google_font', '//fonts.googleapis.com/css?family=Lato:400,700,900|Quicksand:400,500,700', false, null );
+  wp_enqueue_style( 'google_font', '//fonts.googleapis.com/css?family=Lato:400,700,900', false, null );
 
   wp_enqueue_style( 'sage-css', Assets\asset_path( 'styles/main.css' ), false, null );
 

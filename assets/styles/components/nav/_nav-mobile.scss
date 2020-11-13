@@ -20,8 +20,8 @@
   .nav-item__link {
     display: block;
     flex: 1 1 auto;
-    padding: 0.5em;
-    color: $text;
+    padding: 5px 20px;
+    color: white;
     text-decoration: none;
     transition: background $gen-t;
     
@@ -74,7 +74,6 @@
   
   //===== 1st level =====//
   > .nav-item {
-    border-bottom: 1px solid $borders;
     
     > .nav-item__link-wrapper > .nav-item__link {
       padding-top: 1.2em;

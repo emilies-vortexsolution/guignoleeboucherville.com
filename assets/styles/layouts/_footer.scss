@@ -1,0 +1,14 @@
+.site-footer{
+  background-color: $primary;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font: 400 1.4rem $font1;
+  @include __MIN(md){
+    padding: 30px 0;
+  }
+
+  a{
+    color: white;
+  }
+}

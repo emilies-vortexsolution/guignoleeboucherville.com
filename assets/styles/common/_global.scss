@@ -71,6 +71,11 @@ sub {
   @include sr-only;
 }
 
+a{
+  text-decoration: none;
+  color: $primary;
+}
+
 // Remove clickable link when not on touchscreen
 // .no-touchevents [href^="fax"],
 // .no-touchevents [href^="tel"] {

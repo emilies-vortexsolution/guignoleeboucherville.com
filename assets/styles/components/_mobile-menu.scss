@@ -37,9 +37,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: white;
-  border-top: 1px solid $borders;
-  border-left: 1px solid $borders;
+  background: $primary;
   transform: translateX(100%);
   transition: transform $gen-t $gen-bezier;
 

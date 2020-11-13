@@ -6,8 +6,7 @@
   z-index: 999;
   top: 0;
   width: 100%;
-  border-bottom: 1px solid $borders;
-  background: white;
+  background: $primary;
   display: flex;
   align-items: center;
 
@@ -37,6 +36,8 @@
   }
 
   .nav-primary-wrapper {
+    width: 100%;
+    flex: 1 1 auto;
     @include __MAX( hidemenu ) {
       display: none;
     }

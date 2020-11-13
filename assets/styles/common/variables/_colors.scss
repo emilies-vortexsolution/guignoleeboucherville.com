@@ -9,9 +9,15 @@ $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
 
-$primary: #00a6e9 !default;
+$red-light: #A71027;
+$red: #CF112E;
+$red-dark: #951024;
+$green: #147724;
 
-$text: #000;
+$primary: $red !default;
+$secondary: $green !default;
+
+$text: #1F1E1E;
 $text-light: #272727;
 
 $borders: #EDEDED;

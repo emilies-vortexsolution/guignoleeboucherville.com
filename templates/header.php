@@ -2,11 +2,6 @@
   
   <div class="navbar">
     <div class="container navbar__inner">
-      <div class="navbar__home-link-wrapper">
-        <a class="navbar__home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>">
-          <img src="<?php echo esc_url( get_logo_url() ); ?>" alt="<?php bloginfo( 'name' ); ?>" class="navbar__logo">
-        </a>
-      </div>
       
       <nav class="nav-primary-wrapper">
         <?php

@@ -1,12 +1,5 @@
-.nav-primary-wrapper {
-  
-}
-
 .nav-primary {
-  
-  .dropdown__subnav-wrapper {
-    background: white;
-  }
+  justify-content: flex-end;
   
   .dropdown__subnav {
     background: inherit;
@@ -14,7 +7,12 @@
   
   //===== Any level =====//
   .nav-item {
-    
+    margin-left: 40px;
+    .nav-item__link{
+      color: white;
+      font: 700 1.4rem $font1;
+      text-transform: uppercase;
+    }
   }
   
   //===== 1st level =====//
