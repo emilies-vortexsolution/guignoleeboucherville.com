@@ -1,0 +1,44 @@
+.navbar {
+  @include smart-prop('height' , navbar-h);
+  @include smart-prop('padding-left' , site-p);
+  @include smart-prop('padding-right' , site-p);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  width: 100%;
+  border-bottom: 1px solid $borders;
+  background: white;
+  display: flex;
+  align-items: center;
+
+  .admin-bar & {
+    @include smart-prop( top, admin-bar-h );
+  }
+
+  .navbar__inner{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navbar__home-link-wrapper{
+    width: 180px;
+    flex: 0 0 auto;
+
+    @include __MIN(hidemenu){
+      width: 240px;
+    }
+
+    img{
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .nav-primary-wrapper {
+    @include __MAX( hidemenu ) {
+      display: none;
+    }
+  }
+}

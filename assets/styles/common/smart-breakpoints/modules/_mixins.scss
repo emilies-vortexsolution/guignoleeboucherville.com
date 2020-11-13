@@ -1,0 +1,126 @@
+////////////// SMART BREAKPOINT TURN ON MEDIA QUERIES MIXINS //////////////
+
+// MIN-WIDTH
+@mixin __MIN($size) {
+    $size-px: map-get($media-query-sizes, $size);
+    @if( $size-px == null ) { $size-px: $size; }
+    
+    @media (min-width: $size-px) {
+        @content;
+    }
+}
+
+// MAX-WIDTH
+@mixin __MAX($size) {	
+    $size-px: map-get($media-query-sizes, $size);
+    @if( $size-px == null ) { $size-px: $size; }
+
+    @media (max-width: $size-px - 1) {
+        @content;
+    }
+}
+
+// MIN-MAX
+@mixin __MINMAX($size-min, $size-max) {
+    $size-min-px: map-get($media-query-sizes, $size-min);
+    @if( $size-min-px == null ) { $size-min-px: $size-min; }
+    
+    $size-max-px: map-get($media-query-sizes, $size-max);
+    @if( $size-max-px == null ) { $size-max-px: $size-max; }
+    
+    @media (min-width: $size-min-px) and (max-width: $size-max-px - 1) {
+        @content;
+    }
+}
+
+
+////////////// SMART BREAKPOINT MIXINS ////////////////
+
+@mixin smart-prop( $prop, $concatenationsAndCalculMaps... ) {
+
+    $selector: #{&};
+    $mqMap: create-common-mq-map( $concatenationsAndCalculMaps );
+    $mqList: to-list( $mqMap, 'keys' );
+
+    @each $mq, $mqVal in $mqMap {
+        $result: '';
+        $i: 1;
+        @while $i <= length( $concatenationsAndCalculMaps ) {
+            $result: #{$result} #{get-val-with-fallback(nth($concatenationsAndCalculMaps, $i), $mqList, $mq)};
+            $i: $i + 1;
+        }
+
+        @if map-has-key($media-query-sizes, $mq) {
+            $smart-breakpoints-render-map: recursive-map-merge( $smart-breakpoints-render-map, $mq, ($selector: ($prop: $result)) ) !global;
+        } @else if "base" == $mq {
+            // Faire afficher immédiatement le "base" qui ne sera pas réafficher lors de la boucle global
+            #{$prop}: $result;
+        }
+        
+    }
+}
+
+/**
+ * Permet d'immédiatement faire un affichage d'un Smart Breakpoint pour empêcher que les spécificités soient biaisées.
+ */ 
+@mixin smart-prop-instant( $prop, $concatenationsAndCalculMaps... ) {
+
+    // Créer une map des media-queries utilisé par les variables responsives et le transformer en liste
+    $mqMap: mq-map-sort-by-keys-value( create-common-mq-map( $concatenationsAndCalculMaps ) );
+    $mqList: to-list($mqMap, 'keys');
+        
+    // Faire une boucle pour chaque media-queries commun aux variables responsives
+    // (?) $mqVal n'est là que pour pouvoir utiliser $mq. Ne pas l'enlever. (?)
+    @each $mq, $mqVal in $mqMap {
+
+        $result: '';
+        $i: 1;
+        @while $i <= length( $concatenationsAndCalculMaps ) {
+            $result: #{$result} #{get-val-with-fallback(nth($concatenationsAndCalculMaps, $i), $mqList, $mq)};
+            $i: $i + 1;
+        }
+
+        // Afficher le résultat associé au media-querie actuel
+        // Vérifier si le media query associé existe dans $media-query-sizes
+        @if map-has-key($media-query-sizes, $mq) {
+            @include __MIN( map-get($media-query-sizes, $mq) ) {
+                #{$prop}: $result;
+            }
+        } @else if 'base' == $mq {
+            // Sinon, vérifier si c'est le base qu'on peut afficher sans media query.
+            #{$prop}: $result;
+        }
+        
+    }
+}
+
+/**
+ * Mixin s'occupant d'afficher le rendu final des Smart Breakpoints
+ */
+@mixin render-smart-breakpoints {
+
+    $smart-breakpoints-render-map: mq-map-sort-by-keys-value( $smart-breakpoints-render-map );
+    
+    @each $mq, $propertiesBySelector in $smart-breakpoints-render-map {
+
+        @include __MIN( $mq ) {
+
+            @each $selector, $valuesByProperties in $propertiesBySelector {
+
+                #{$selector} {
+    
+                    @each $property, $value in $valuesByProperties {
+                        
+                        #{$property}: $value;
+                        
+                    } // end EACH $valuesByProperties
+
+                } // end selector
+
+            } // end EACH $propertiesBySelector
+
+        } // end INCLUDE __MIN
+
+    } // end EACH $smart-breakpoints-render-map global
+
+}  // end MIXIN render-smart-breakpoints

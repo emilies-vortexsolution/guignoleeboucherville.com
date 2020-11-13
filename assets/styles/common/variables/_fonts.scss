@@ -1,0 +1,22 @@
+///// Font /////
+// font family
+// (?) Fonts added with wp_enqueue in setup.php (?)
+$font1: 'Oswald', sans-serif;
+$font2: 'Roboto', sans-serif;
+$icon: 'icomoon';
+
+///// Font weight /////
+$font1-thinner: 300;
+$font1-thin: 300;
+$font1-normal: 400;
+$font1-bold: 600;
+$font1-bolder: 700;
+
+$font2-thinner: 400;
+$font2-thin: 400;
+$font2-normal: 400;
+$font2-bold: 700;
+$font2-bolder: 700;
+
+///// Icomoon /////
+$icomoon-font-path: '../../assets/icomoon/fonts';

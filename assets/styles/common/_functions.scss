@@ -1,0 +1,61 @@
+
+///
+/// @example scss - Usage
+///   line-height: ratio(1.6rem, 1.8rem);
+///
+/// @return A unitless ratio like 1.125
+///
+@function ratio($font-size, $ratio) {
+  @return strip-units($ratio) / strip-units($font-size);
+}
+
+///
+/// Fastest way to add the right ratio to "font".
+/// 
+/// @param {Number} $font-size
+/// @param {Number} $line-height-with-same-unit - To have a relevent ratio, use the same unit type, but it's actually not necessary.
+///
+/// @example scss - How to use
+///   font: normal font-ratio(1.6rem, 1.8rem) arial, sans-serif;
+///
+/// @return Something like: 1.6rem/1.125 
+///
+@function font-ratio($font-size, $line-height-with-same-unit) {
+  $line-height: ratio($font-size, $line-height-with-same-unit);
+  @return #{$font-size}/#{$line-height};
+}
+
+///
+/// Transform any unit into VW based on a fixed viewport width.
+///
+/// @param {Number} $size A unit or unit-less number that will be transformed to a vw ratio.
+/// @param {String|Number} $viewport-size Either a smart-breakpoint sizes string or a viewport size directly.
+/// 
+/// @return {Number} The calculated ratio between the given size and the viewport size on 100
+///
+/// @require {function} get-media-query-size-by-name - From Smart-Breakpoints
+/// @require {function} strip-units From Smart-Breakpoints
+///
+@function to-vw($size, $viewport-size: 'wide') {
+  $viewport-size-number: $viewport-size;
+  @if type-of($viewport-size) == 'string' {
+    $viewport-size-number: get-media-query-size-by-name($viewport-size);
+      
+    @if $viewport-size-number == 0 {
+      @warn 'Error in function to-vw: Given viewport size "#{$viewport-size}" does not seems to exist.';
+      @return $size;
+    }
+  }
+  
+  $result: strip-units($size) * 100 / strip-units($viewport-size-number);
+  @return $result * 1vw;
+}
+
+
+///
+/// Will return a calc() of of the overflowing outer cointainer.
+/// Replacing $x value from % to vw may be good for fixed items, but watchout, this doesn't calculate the scrollbar width. 
+///
+@function get-calc-container-max-width-overflow($x: 100%, $max-width: $mw-aligndefault) {
+  @return calc((#{$x} - #{$max-width})/2);
+}

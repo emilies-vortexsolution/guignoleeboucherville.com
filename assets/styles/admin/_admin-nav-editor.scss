@@ -1,0 +1,32 @@
+#wpbody-content { // POWER SELECTOR
+  #menu-settings-column {
+    overflow-y: scroll;
+    
+    &.is-sticky {
+      @include smart-prop( margin-top, admin-bar-h );
+    }
+    
+    @include __MAX( menuwordpressmobile ) {
+      position: static !important;
+      margin-top: 0 !important;
+    }
+    
+    @include __MIN( menuwordpressmobile ) {
+      border: 1px solid #e5e5e5;
+      box-shadow: 0 1px 1px rgba(0,0,0,.04);  
+      height: 85vh;
+      
+      &.is-sticky {
+        position: fixed;
+        top: 0;
+      }
+      
+      #nav-menu-meta {
+        > h2,
+        > .icl_lang_menu {
+          padding: 0 14px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+$media-query-sizes: (
+  xxxs: 360px,
+  xs: 451px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1441px,
+  xxxl: 1681px,
+  wide: 1920px,
+  
+  menuwordpressmobile: 783px, 
+  hidemenu: 980px, 
+  gen-aligndefault: $mw-aligndefault,
+  gen-alignwide: $mw-alignwide,
+);

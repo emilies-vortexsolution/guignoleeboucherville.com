@@ -1,0 +1,110 @@
+.wysiwyg {
+
+  p{
+    font-size: 1.6rem;
+
+    &.has-small-font-size{
+      font-size: 1.4rem;
+    }
+
+    &.has-large-font-size{
+      font-size: 1.8rem;
+    }
+
+  }
+  
+  //////////////////////////////////////////////////////
+  ////////////////// CUSTOMIZED LIST ///////////////////
+  //////////////////////////////////////////////////////
+  
+  ///// VAR /////
+  // All thes variables must pocess the same unit (except those specified otherwise.)
+  
+  // Change these.
+  $list-lh: 1.5; // Must be unit less
+  $list-symbol-w: 0.35em;
+  $list-symbol-h: $list-symbol-w;
+  $list-symbol-space-between-text: 0.75em;
+  
+  // You may change these, but they might be better left alone.
+  $list-fs: 1em; // If it's EM, font-size must be 1em or the text/shape won't be vertically centered.You may transform: scale(xx); as you wish instead.
+
+  // Auto calculated, no need to change... in theory.
+  $list-single-line-height: $list-fs * $list-lh;
+  $list-symbol-top: ($list-single-line-height - $list-symbol-h) / 2;
+
+  // end var //
+  
+
+  ul,
+  ol {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: $list-symbol-w + $list-symbol-space-between-text;
+    font-size: $list-fs;
+    line-height: $list-lh;
+    
+    ul,
+    ol {
+      font-size: 100%;
+    }
+
+    > li {
+      position: relative;
+      line-height: $list-lh;
+      font-size: 100%;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: ($list-symbol-w + $list-symbol-space-between-text) * -1;
+        font-size: 100%;
+      }
+    }
+  }
+
+  ul {
+    > li {
+      &::before {
+        content: '';
+        top: $list-symbol-top;
+        left: ($list-symbol-w + $list-symbol-space-between-text) * -1;
+        width: $list-symbol-w;
+        height: $list-symbol-h;
+        border-radius: $list-symbol-w;
+        background-color: $primary;
+
+        // Symbol not centered ?
+        // This is the fault of the font-family and the way caracters are placed inside the calculated line-height of the LI.
+        // The solution is a little hacking into the true mathematical vertical center.
+        // So, if needed, use this translateY as you wish.
+        //
+        // transform: translateY( -0.1em );
+      }
+    }
+  }
+
+
+  ol {
+    counter-reset: nb-list-item;
+
+    > li {
+      counter-increment: nb-list-item;
+
+      &::before {
+        content: counter(nb-list-item) ". ";
+        top: 0;
+        color: $primary;
+        
+        // Need font-size change for your 1em ?
+        // To keep the text vertical-align: middle; (not the real property) we need to not touch the font-size: 1em;
+        // But we can scale the text all we want and it will stay centered vertically.
+        // Use this if needed.
+        //
+        // transform: scale( 0.9 );
+      }
+    }
+  }
+  ///// end customized list /////
+}

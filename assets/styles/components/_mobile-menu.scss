@@ -1,0 +1,49 @@
+
+#mobile-menu-wrapper {
+  visibility: hidden;
+  pointer-events: none;
+  overflow: hidden;
+  position: fixed;
+  z-index: 9999;
+  right: 0;
+  @include smart-prop( top, navbar-h );
+  width: 100%;
+  @include smart-prop( height, 'calc(100vh - ', navbar-h, ')' );
+  transition: visibility 0s $gen-t;
+  
+  @include __MIN( sm ) {
+    width: 50%;
+  }
+  
+  @include __MIN( lg ) {
+    width: 35%;
+  }
+  
+  .admin-bar & {
+    @include smart-prop( top, (navbar-h, '+', admin-bar-h) );
+    @include smart-prop( height, 'calc(100vh - ', (navbar-h, '+', admin-bar-h), ')' );
+  }
+  
+  .mobile-menu-open & {
+    visibility: visible;
+    pointer-events: auto;
+    transition: unset;
+  }
+}
+
+
+#mobile-menu {
+  overflow: auto;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-top: 1px solid $borders;
+  border-left: 1px solid $borders;
+  transform: translateX(100%);
+  transition: transform $gen-t $gen-bezier;
+
+  .mobile-menu-open & {
+    transform: translateX(0);
+  }
+}

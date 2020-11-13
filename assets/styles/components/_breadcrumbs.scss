@@ -1,0 +1,48 @@
+.breadcrumbs {
+  @include smart-prop( padding-left, site-p );
+  @include smart-prop( padding-right, site-p );
+  color: $text;
+}
+
+.breadcrumbs__list {
+  @include alignwide;
+  @include quickflex( row, flex-start, flex-start, wrap );
+  position: relative;
+  padding: 30px 0;
+}
+
+.breadcrumbs__item {
+
+  &::after {
+    content: '>';
+    display: inline-block;
+    margin: 0 0.7em 0 0.5em;
+    color: inherit; 
+    speak: none; // Make screen-readers not speak this pseudo-element.
+  }
+  
+  &:last-child {
+    &::after {
+      display: none;
+    }
+  }
+  
+  &:last-child {
+    .breadcrumbs__item__title {
+      font-weight: 400;
+    }
+  }
+  
+  a {
+    color: $text-link;
+    transition: color $gen-t;
+    
+    &:hover {
+      color: $text-link-hover;
+    }
+  }
+}
+
+.breadcrumbs__item__title {
+  font-weight: 500;
+}

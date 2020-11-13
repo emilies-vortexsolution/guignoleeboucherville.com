@@ -1,0 +1,99 @@
+{
+    "key": "group_default_image_by_post_type",
+    "title": "Placeholder image by post type",
+    "fields": [
+        {
+            "key": "field_5eb29f663ad0c",
+            "label": "Default image by post type",
+            "name": "default_image_by_post_type",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "",
+            "sub_fields": [
+                {
+                    "key": "field_5eb29f903ad0d",
+                    "label": "Select a post type",
+                    "name": "post_type_select",
+                    "type": "post_types_list_field",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "admin_only": 0,
+                    "allow_multiple": 1,
+                    "disallowed_post_types": [
+                        "attachment",
+                        "revision",
+                        "nav_menu_item",
+                        "custom_css",
+                        "customize_changeset",
+                        "oembed_cache",
+                        "user_request",
+                        "wp_block",
+                        "acf-field-group",
+                        "acf-field"
+                    ]
+                },
+                {
+                    "key": "field_5eb29fb23ad0e",
+                    "label": "Default image",
+                    "name": "default_image",
+                    "type": "image",
+                    "instructions": "Upload the biggest image format used for this post type",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "admin_only": 0,
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "default_image_by_post_type"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1588765430
+}

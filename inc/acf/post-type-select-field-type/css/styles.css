@@ -1,0 +1,20 @@
+.post-types-checkboxes-inner {
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
+.post-types-checkboxes__label {
+  flex: 0 0 auto;
+  display: block;
+  width: 33.33%;
+  margin-bottom: 4px;
+}
+
+.acf-field-setting-disallowed_post_types .acf-checkbox-list li label {
+  font-weight: 900;
+}
+.acf-field-setting-disallowed_post_types .acf-checkbox-list li label.selected {
+  opacity: 0.8;
+  font-weight: normal;
+}

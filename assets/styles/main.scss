@@ -1,0 +1,64 @@
+@import "common/smart-breakpoints/smart-breakpoints";
+
+@import "common/reset";
+
+
+
+@import "common/variables/general";
+@import "common/variables/colors";
+@import "common/variables/fonts";
+@import "common/variables/breakpoints-defaults-overwrite";
+@import "common/variables/smart-variables";
+
+@import "../icomoon/variables";
+@import "../icomoon/style";
+@import "common/variables/icons"; // Needs to import after icomoon
+
+@import "common/functions";
+@import "common/mixins";
+@import "common/global";
+
+@import "common/entry-content";
+@import "common/alignments";
+@import "components/wysiwyg";
+@import "components/buttons";
+@import "components/comments";
+@import "components/forms";
+@import "components/wp-classes";
+@import "components/social-media";
+@import "components/mobile-menu";
+@import "components/mobile-menu-toggle";
+@import "components/vtx-fselect";
+@import "components/nav/dropdown/dropdown-imports";
+@import "components/nav/nav";
+@import "components/nav/nav-primary";
+@import "components/nav/nav-mobile";
+@import "components/skip-nav";
+@import "components/sitemap";
+@import "components/breadcrumbs";
+
+@import "layouts/header";
+@import "layouts/navbar";
+@import "layouts/sidebar";
+@import "layouts/footer";
+
+@import "components/blocks/wordpress/wp-block-table";
+@import "components/blocks/wordpress/wp-block-media-text";
+@import "components/blocks/wordpress/wp-block-buttons";
+@import "components/blocks/wordpress/wp-block-image";
+@import "components/blocks/wordpress/wp-block-gallery";
+@import "components/blocks/wordpress/wp-block-embed";
+@import "components/blocks/wordpress/wp-block-column";
+@import "components/blocks/wordpress/wp-block-separator";
+
+
+@import "layouts/templates/page";
+@import "layouts/templates/single";
+@import "layouts/templates/front-page";
+@import "layouts/templates/404";
+@import "layouts/templates/template-custom";
+
+
+// `smart-breakpoints-render` Must be imported last.
+// Otherwise, further use of `smart-prop()` will not work properly.
+@import "common/smart-breakpoints/smart-breakpoints-render";

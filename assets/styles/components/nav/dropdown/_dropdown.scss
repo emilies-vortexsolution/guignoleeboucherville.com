@@ -1,0 +1,190 @@
+
+////
+/// This whole file is wrapped in your chose $nav
+///
+/// @example SCSS - How it's represented
+///   #{$nav} {
+///     > .dropdown {} // Dropdown 1st level 
+///   }
+///  
+///  @todo Add a setting "style" in wich there would have "normal" and "mega-menu". This would change wich file get imported by a condition.
+////
+
+
+.dropdown {
+  position: relative;
+  
+  // Active state
+  &:hover,
+  &.opened {
+    
+    > .dropdown__subnav-wrapper {
+      z-index: 100;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate( get-translate-x(), 0);
+      transition: transform $transform-t $transform-bezier, opacity $transform-t;
+    }
+  }
+}
+
+
+.nav-item__link-wrapper {
+  @include quickflex( row, space-between, center, nowrap );
+}
+
+
+.dropdown__toggle {
+  display: block;
+  
+  &::before {
+    @include icomoon( $icon-arrow-down );
+    display: block;
+  }
+}
+
+
+.dropdown__subnav-wrapper {
+  @include get-menu-alignement;
+  
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 100%;
+  min-width: 100%;
+  padding: 0;
+  box-shadow: 0 3px 10px -2px rgba(0,0,0,0.5);
+  transform: translate( get-translate-x(), $translate-y);
+  transition: transform $transform-t $transform-bezier, opacity $transform-t, visibility 0s $transform-t;
+  
+  &:hover {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  > .dropdown__subnav {
+    padding-top: $dropdown-padding-y;
+    padding-bottom: $dropdown-padding-y;
+    
+    > .nav-item {
+
+      > .nav-item__link {
+        white-space: nowrap;
+        display: block;
+      }
+    }
+  }
+  
+  .dropdown {
+
+    > .dropdown__subnav-wrapper {
+      top: $dropdown-padding-y * -1;
+      left: 100%;
+      transform: translate( 0, 0 );
+    }
+  }
+}
+
+
+.dropdown__subnav {
+  padding: 0;
+  list-style-type: none;
+}
+
+
+// Le dernier dropdown affiche son menu vers la gauche au lieu de la droite à partir de certains nombre d'éléments
+> .dropdown#{get-reverse-item-selector()} {
+    
+  > .dropdown__subnav-wrapper {
+    @include get-reversed-menu-alignement;
+  }
+  
+  .dropdown > .dropdown__subnav-wrapper {
+    left: auto;
+    right: 100%;
+  }
+}
+
+///// fin style général dropdown /////
+
+
+
+///////////////////////////////////////////////////////////////////////////////////
+/////                      PETIT LOSANGE DES DROPDOWNS                        /////
+///// Donnez-vous la peine de modifié ça seulement si vous le faîte afficher. /////
+///////////////////////////////////////////////////////////////////////////////////
+@if( true == $show-dropdown-pointing-square ) {
+  
+  // (?) Le petit losange est dans le :before (?)
+
+  .dropdown__subnav-wrapper {
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      width: $pointing-square-width;
+      height: $pointing-square-width;
+      background: inherit;
+      box-shadow: 0 0 10px -2px rgba(0,0,0,0.5);
+      transform: translate(-50%, -50%) rotate(45deg);
+      transition: transform $transform-t $transform-bezier;
+      @include get-alignement-for-pointing-square;
+    }
+
+    .dropdown {
+      > .dropdown__subnav-wrapper {
+        &::before {
+          left: 0;
+          top: $dropdown-padding-y + 2px; // The small fixer must be changed manually. It depends on the link line-heigth
+          transform: translate(-50%, 0%) rotate(45deg);
+        }
+      }
+    }
+  }
+  
+  > .dropdown#{get-reverse-item-selector()} {
+    .dropdown__subnav-wrapper {
+      &:before {
+        @include get-reversed-alignement-for-pointing-square;
+      }
+    }
+    
+    .dropdown > .dropdown__subnav-wrapper {
+      &:before {
+        left: auto;
+        right: $pointing-square-width * -1;
+      }
+    }
+  }
+} 
+///// fin IF losange true //////
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+/////                 SPACER BETWEEN LINK WRAPPER AND DROPDOWN                    /////
+///// Usefull to make a bridge and make sure the dropdown doesn't close too early /////
+/////           Is displayed only if $dropdown-offset-y value is above 0          /////
+///////////////////////////////////////////////////////////////////////////////////////
+@if( 0 < $dropdown-offset-y ) {
+  > .dropdown > .dropdown__subnav-wrapper {
+    margin-top: $dropdown-offset-y;
+    
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: $dropdown-offset-y * -1;
+      left: 0;
+      right: 0;
+      height: $dropdown-offset-y;
+      background: transparent;
+    }
+  }
+}
+///// fin IF spacer true //////

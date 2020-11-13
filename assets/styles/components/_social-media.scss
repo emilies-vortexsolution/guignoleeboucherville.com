@@ -1,0 +1,63 @@
+$social-media-colors: (
+  facebook: #36589b,
+  linkedin: #0078B6,
+  twitter: #31aae1,
+  youtube: #fd1000,
+  instagram: #ED4C63,
+);
+
+/**
+ * Fait une boucle à l'intérieur d'une map: ( nom média : couleur média )
+ *
+ * (?) La mixin assume que ce sont des liens. (?)
+ * (!) Dépendance à une map nommé $social-media-colors (!)
+ */
+@mixin social-media-link-style( $color: white, $background-color: black ) {
+    
+  @each $mediaName, $mediaColor in $social-media-colors {
+    
+    .#{$mediaName} {
+      background: $background-color;
+      transition: background $gen-t;
+      color: $color;
+      
+      &:hover {
+        background-color: $mediaColor;
+      }
+    }
+    
+  }
+}
+
+.social-media-container {
+  @include quickflex( row, flex-end, center, wrap );
+  @include social-media-link-style;
+}
+
+.social-media-button {
+  // VAR
+  $w: 1.75em;
+  // var
+  display: block;
+  position: relative;
+  width: $w;
+  height: $w;
+  margin-left: 1em;
+  padding: 0 !important;
+  color: white;
+  border-radius: $w;
+  font-size: 1.6rem;
+  
+  &:before {
+    @include icomoon;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  
+  &:hover {
+    color: white;
+  }
+}

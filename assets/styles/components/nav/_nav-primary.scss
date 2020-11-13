@@ -1,0 +1,38 @@
+.nav-primary-wrapper {
+  
+}
+
+.nav-primary {
+  
+  .dropdown__subnav-wrapper {
+    background: white;
+  }
+  
+  .dropdown__subnav {
+    background: inherit;
+  }
+  
+  //===== Any level =====//
+  .nav-item {
+    
+  }
+  
+  //===== 1st level =====//
+  > .nav-item {
+
+  }
+  
+  //===== 2nd level =====//
+  .subnav-depth-0 {
+    > .nav-item {
+      
+    }
+  }
+  
+  //===== 3rd level =====//
+  .subnav-depth-1 {
+    > .nav-item {
+      
+    }
+  }
+}

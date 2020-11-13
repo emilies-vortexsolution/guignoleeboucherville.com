@@ -1,0 +1,44 @@
+{
+    "advanced-custom-fields-pro": {
+        "slug": "advanced-custom-fields-pro",
+        "version": "5.9.3",
+        "plugin_name": "Advanced Custom Fields - advanced-custom-fields-pro",
+        "file_name": "Advanced Custom Fields\/advanced-custom-fields-pro.5.9.3",
+        "checked": true
+    },
+    "relevanssi-premium": {
+        "slug": "relevanssi-premium",
+        "version": "2.7.0",
+        "plugin_name": "Relevanssi Premium - relevanssi-premium",
+        "file_name": "Relevanssi Premium\/relevanssi-premium_2.7.0",
+        "checked": false
+    },
+    "vtx-toolkit": {
+        "slug": "vtx-toolkit",
+        "version": "1.4.0",
+        "plugin_name": "Vortex Solution - vtx-toolkit",
+        "file_name": "Vortex Solution\/vtx-toolkit-1.4.0",
+        "checked": true
+    },
+    "wp-migrate-db-pro": {
+        "slug": "wp-migrate-db-pro",
+        "version": "1.9.13",
+        "plugin_name": "WP Migrate DB - wp-migrate-db-pro",
+        "file_name": "WP Migrate DB\/wp-migrate-db-pro-1.9.13",
+        "checked": true
+    },
+    "wp-rocket": {
+        "slug": "wp-rocket",
+        "version": "3.7.3",
+        "plugin_name": "WP Rocket - wp-rocket",
+        "file_name": "WP Rocket\/wp-rocket_3.7.3",
+        "checked": true
+    },
+    "ithemes-security-pro": {
+        "slug": "ithemes-security-pro",
+        "version": "6.7.1",
+        "plugin_name": "iTheme Security - ithemes-security-pro",
+        "file_name": "iTheme Security\/ithemes-security-pro-6.7.1",
+        "checked": true
+    }
+}

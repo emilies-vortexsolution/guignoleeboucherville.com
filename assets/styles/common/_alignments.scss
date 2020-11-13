@@ -1,0 +1,30 @@
+
+.entry-content > *:not(.alignwide):not(.alignfull):not(.is-style-wide){
+  @include aligndefault;
+  @include smart-prop( width, 'calc(100% - ',(container-m,'*',2),')' );
+}
+
+.entry-content > .alignwide{
+  @include alignwide;
+  @include smart-prop( width, 'calc(100% - ',(container-m,'*',2),')' );
+}
+.entry-content > .alignfull{
+  width:100%;
+}
+
+.entry-content > .aligncenter{
+  width:100%;
+  text-align: center;
+}
+
+.entry-content .alignright,
+.entry-content .alignleft{
+  width: auto !important;
+  max-width: unset !important;
+
+}
+
+.container {
+  @include alignwide;
+  @include smart-prop( width, 'calc(100% - ',(container-m,'*',2),')' );
+}

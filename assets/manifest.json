@@ -1,0 +1,74 @@
+{
+    "dependencies": {
+        "main.js": {
+            "files": [
+                "scripts/main.js",
+                "scripts/video-ratios.js",
+                "scripts/dropdown-menu.js",
+                "scripts/mobile-menu.js"
+            ],
+            "main": true
+        },
+        "fonts": {
+            "files": [
+                "fonts/**/*",
+                "icomoon/fonts/*"
+            ]
+        },
+        "main.css": {
+            "files": [
+                "styles/main.scss"
+            ],
+            "main": true
+        },
+        "admin.js": {
+            "files": [
+                "scripts/admin/admin.js",
+                "scripts/admin/admin-nav-editor-fixed-bar.js",
+                "scripts/admin/admin-nav-editor-items.js"
+            ]
+        },
+        "admin.css": {
+            "files": [
+                "styles/admin.scss"
+            ]
+        },
+        "editor.css": {
+            "files": [
+                "styles/admin-editors.scss"
+            ]
+        },
+        "customizer.js": {
+            "files": [
+                "scripts/customizer.js"
+            ]
+        },
+        "modernizr.js": {
+            "vendor": [
+                "assets/scripts/hand-dropped-vendor/modernizr.js"
+            ]
+        },
+        "polyfills.js": {
+            "vendor": [
+              "assets/scripts/hand-dropped-vendor/nodelist-foreach-polyfill.js",
+              "assets/scripts/hand-dropped-vendor/element-qsa-scope-polyfill.js"
+            ]
+          },      
+        "vtx-fselect.js": {
+            "files": [
+                "scripts/vtx-fselect.js"
+            ]
+        },
+        "global-search.js": {
+            "vendor": [
+                "node_modules/fuse.js/dist/fuse.basic.min.js"
+            ],
+            "files": [
+                "scripts/search-autocomplete.js"
+            ]
+        }
+    },
+    "config": {
+        "devUrl": "http://theme-vortex.local/"
+    }
+}

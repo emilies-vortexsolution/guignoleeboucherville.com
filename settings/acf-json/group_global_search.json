@@ -1,0 +1,203 @@
+{
+    "key": "group_5e6a38d29d7f7",
+    "title": "Options - Recherche globale",
+    "fields": [{
+        "key": "field_5f3c103a22d9c",
+        "label": "Résultats supplémentaires",
+        "name": "manual_keywords",
+        "type": "repeater",
+        "instructions": "Ajoutez ici une liste de résultats qui seront suggéré en priorité. Choisissez une page, le texte qui va s'afficher et une liste de mots supplémentaires qui ne sont pas dans le titre et qui devraient aider à afficher ce résultat. Il est inutile de rajouter dans les mots clés des mots\/nombre déjà saisi dans la phrase de suggestion.",
+        "required": 0,
+        "conditional_logic": 0,
+        "wrapper": {
+            "width": "15",
+            "class": "",
+            "id": ""
+        },
+        "admin_only": 0,
+        "collapsed": "field_5f3c111e22da0",
+        "min": 0,
+        "max": 0,
+        "layout": "table",
+        "button_label": "Ajouter une sugestion",
+        "sub_fields": [{
+                "key": "field_5f6cb10b7eed8",
+                "label": "Url externe ?",
+                "name": "url_externe",
+                "type": "true_false",
+                "instructions": "Privilégiez les pages a lier plutot que les urls",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "admin_only": 0,
+                "acfe_permissions": "",
+                "message": "",
+                "default_value": 0,
+                "ui": 1,
+                "ui_on_text": "Oui",
+                "ui_off_text": "Non"
+            },
+            {
+                "key": "field_5f3c108822d9e",
+                "label": "Page a lier",
+                "name": "page_a_lier",
+                "type": "post_object",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": [
+                    [{
+                        "field": "field_5f6cb10b7eed8",
+                        "operator": "!=",
+                        "value": "1"
+                    }]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "admin_only": 0,
+                "acfe_permissions": "",
+                "post_type": "",
+                "taxonomy": "",
+                "allow_null": 0,
+                "multiple": 0,
+                "return_format": "id",
+                "save_custom": 0,
+                "save_post_status": "publish",
+                "acfe_bidirectional": {
+                    "acfe_bidirectional_enabled": "0"
+                },
+                "ui": 1
+            },
+            {
+                "key": "field_5f6cb0e67eed7",
+                "label": "URL",
+                "name": "url_a_lier",
+                "type": "url",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": [
+                    [{
+                        "field": "field_5f6cb10b7eed8",
+                        "operator": "==",
+                        "value": "1"
+                    }]
+                ],
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "admin_only": 0,
+                "acfe_permissions": "",
+                "default_value": "",
+                "placeholder": ""
+            },
+            {
+                "key": "field_5f3c111e22da0",
+                "label": "Phrase de sugestion",
+                "name": "sugestion",
+                "type": "text",
+                "instructions": "",
+                "required": 1,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "admin_only": 0,
+                "acfe_permissions": "",
+                "default_value": "",
+                "placeholder": "",
+                "prepend": "",
+                "append": "",
+                "maxlength": ""
+            },
+            {
+                "key": "field_5f3c105c22d9d",
+                "label": "Mots clés supplémentaires",
+                "name": "keywords",
+                "type": "repeater",
+                "instructions": "",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "admin_only": 0,
+                "acfe_permissions": "",
+                "acfe_repeater_stylised_button": 0,
+                "collapsed": "field_5f3c10fa22d9f",
+                "min": 0,
+                "max": 0,
+                "layout": "table",
+                "button_label": "Ajouter un mot clé",
+                "sub_fields": [{
+                    "key": "field_5f3c10fa22d9f",
+                    "label": "Mot clé",
+                    "name": "keyword",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "admin_only": 0,
+                    "acfe_permissions": "",
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }]
+            },
+            {
+                "key": "field_5f8e5aed1d9b7",
+                "label": "Resultat Membre",
+                "name": "private_keywords",
+                "type": "true_false",
+                "instructions": "Ce résultat est-il réservé aux membres?",
+                "required": 0,
+                "conditional_logic": 0,
+                "wrapper": {
+                    "width": "",
+                    "class": "",
+                    "id": ""
+                },
+                "admin_only": 0,
+                "message": "",
+                "default_value": 0,
+                "ui": 0,
+                "ui_on_text": "",
+                "ui_off_text": ""
+            }
+        ]
+    }],
+    "location": [
+        [{
+            "param": "options_page",
+            "operator": "==",
+            "value": "global_search_options"
+        }]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "left",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1603370541
+}

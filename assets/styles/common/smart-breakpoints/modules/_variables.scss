@@ -1,0 +1,37 @@
+/**
+ * Variable qui contiendra tous les paramètres des Smart Breakpoitns à afficher
+ */
+$smart-breakpoints-render-map: () !global;
+
+/**
+ * La map des tailles de breakpoints par défaut.
+ * Elle est basé sur la nommenclature de Bootstrap avec quelques tailles supplémentaires.
+ */
+$smart-media-query-sizes: (
+    // Tailles à la Bootstrap
+    xxxs: 360px,
+    xxs: 451px,
+    xs: 561px,
+    sm: 768px,
+    md: 980px,
+    lg: 1281px,
+    xl: 1441px,
+    xxl: 1681px,
+    
+    // Taille où la barre d'admin de WordPress change de taille
+    menuwordpressmobile: 783px, 
+    
+    // Taille associé au moment où le site faire disparaître son menu principale pour afficher le menu mobile
+    hidemenu: 980px, 
+) !default;
+
+/**
+ * Les valeurs qui seront utilisées pour facilité la construction et la maintenabilité d'une structure de style en SASS
+ */
+$smart-variables: (
+    // Hauteur de la bar d'admin de WordPress
+    admin-bar-h: (
+        base: 46px,
+        menuwordpressmobile: 32px,
+    ),
+) !default;

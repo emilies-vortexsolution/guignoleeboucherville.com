@@ -1,0 +1,65 @@
+{
+    "key": "group_nav_item_options",
+    "title": "Lien - Options",
+    "fields": [
+        {
+            "key": "field_5ea5fa0212200",
+            "label": "Transformer ce lien en en-tête",
+            "name": "nav_item_is_heading",
+            "type": "true_false",
+            "instructions": "Il perdra tout ses attributs de lien.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "message": "",
+            "default_value": 0,
+            "ui": 1,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
+            "key": "field_5e94abac5da93",
+            "label": "Choisir une icône",
+            "name": "nav_item_icon",
+            "type": "image_select",
+            "instructions": "Ce sont les choix du fichier \"icomoon.svg\".\r\nL'élément utilisant l'icône devra avoir ces classes : \"class='icon icon-{nom de l'icône}'\".",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "get_image_method": "font",
+            "images_folder_path": "",
+            "images_list": "",
+            "font_path": "dist\/fonts\/icomoon",
+            "return_format": "image_url",
+            "allow_none": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "nav_menu_item",
+                "operator": "==",
+                "value": "all"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1587936097
+}

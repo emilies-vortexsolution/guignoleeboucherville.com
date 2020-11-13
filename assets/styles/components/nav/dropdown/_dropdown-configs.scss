@@ -1,0 +1,27 @@
+////////////////////////////////////////////////////
+/////      CONFIGURATION DES PARAMÈTRES        /////
+///// Modifiez tout ce qu'il y a là au besoin. /////
+////////////////////////////////////////////////////
+
+
+// Nav alignement
+$alignement-first-level-dropdown: 'left'; // CHOIX : left, right, center
+$dropdown-item-pos-to-reverse-alignement: 1; // Si l'alignement est «left», on part du dernier élément, du premier si c'est right.
+$which-item-start-reverse: 'last'; // CHOIX : first, last
+
+
+// Animation
+$transform-t: $gen-t;
+$transform-bezier: $gen-bezier;
+$translate-y: -5%;
+
+
+// Dropdown
+$dropdown-padding-y: 15px;
+$dropdown-offset-y: 20px; // To add a space between the dropdown and the link-wrapper.
+
+
+// Pointing square
+$show-dropdown-pointing-square: true;
+$pointing-square-width: 12px;
+$pointing-square-offset: 20px;

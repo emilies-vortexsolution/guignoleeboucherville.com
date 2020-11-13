@@ -1,0 +1,108 @@
+.search-form label {
+  font-weight: normal;
+}
+
+// DATEPICKER //
+
+.ui-datepicker{
+  background: white;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.3);
+  position:absolute;
+  top: -50vh;
+  left: -50vw;
+}
+
+.ui-datepicker-prev,
+.ui-datepicker-next
+{
+  width: 50%;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ui-datepicker-next{
+  text-align: right;
+}
+
+.ui-datepicker-title{
+  margin-top: 5px;
+  @include quickflex(row, space-between, center, nowrap);
+  
+  > *{
+    width: calc(50% - 5px);
+  }
+}
+
+.ui-datepicker-calendar{
+  margin-top: 10px;
+  thead{
+    span{
+      color: grey;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+    }
+  }
+  tr{
+    th, td{
+      padding:5px;
+      text-align: center;
+      &:first-child{ padding-left: 0; }
+      &:last-child{ padding-right: 0; }
+    }
+    
+    a{
+      text-decoration: none;
+    }
+  }
+}
+
+/* CHECKBOXES */ 
+
+.checkbox_container{
+  label{
+    display: flex;
+    align-items: center;
+    cursor:pointer;
+    font-size: 1.4rem;
+    &:before{
+      content: "";
+      display:inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: white;
+      box-shadow: 0 0 0 1px $borders;
+      border: 5px solid white;
+      flex: 0 0 auto;
+      margin-right: 20px;
+    }
+  }
+
+  input {
+    @include sr-only;
+    
+    display: block;
+    
+    &:focus + label {
+      &:before{
+        outline: 1px solid $focus-outline;
+      }
+    }
+    
+    &:checked + label:before{
+      background-color: $primary;
+    }
+  }
+  
+}
+
+/* BOUTONS RADIO */ 
+
+.radio_container{
+  @extend .checkbox_container;
+
+  input[type="radio"]{ @include sr-only; }
+  label:before{ border-radius: 100%; }
+}

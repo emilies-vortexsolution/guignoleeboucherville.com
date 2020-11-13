@@ -1,0 +1,12 @@
+////
+/// To create a local scope, we use this fake class and import the files inside.
+/// @at-root permits the optimisation by going through the fake class without printing it in the resulting css file.
+////
+.init-dropdown-menu-local-scope {  
+  @import "dropdown-configs";
+  @import "dropdown-helpers";
+  
+  @at-root .nav-primary {    
+    @import "dropdown";
+  }
+}

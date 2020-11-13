@@ -1,0 +1,64 @@
+// Déterminer le sélecteur d'inversement
+@function get-reverse-item-selector() {
+  $reverse-item-selector: ":nth-last-child";
+  @if( first == $which-item-start-reverse ) {
+    $reverse-item-selector: ":nth-child";
+  }
+  $reverse-item-selector: "#{$reverse-item-selector}( -n + #{$dropdown-item-pos-to-reverse-alignement})";
+  
+  @return $reverse-item-selector;
+  
+}
+
+@function get-translate-x( $alignement: $alignement-first-level-dropdown ) {
+  
+  @if center == $alignement {
+    @return -50%;
+  }
+  
+  @return 0;
+}
+
+// Donner la base pour l'alignement
+@mixin get-menu-alignement( $alignement: $alignement-first-level-dropdown ) {
+  @if right == $alignement {
+    right: 0;
+  } @else if center == $alignement {
+    left: 50%;
+  } @else {
+    left: 0
+  }
+}
+
+// Donner la base pour l'alignement revirée
+@mixin get-reversed-menu-alignement( $alignement: $alignement-first-level-dropdown ) {
+  @if left == $alignement {
+    left: auto;
+    right: 0;
+  } @else if right == $alignement {
+    left: 0;
+    right: auto;
+  }
+}
+
+// Donne la position left ou right pour le pointing square
+@mixin get-alignement-for-pointing-square( $alignement: $alignement-first-level-dropdown ) {
+  @if( center == $alignement-first-level-dropdown ) {
+    left: 50%;
+  } @else if right == $alignement-first-level-dropdown {
+    right: $pointing-square-offset;
+  } @else {
+    left: $pointing-square-offset;
+  }
+}
+
+// Donne la position left ou right pour le pointing square
+@mixin get-reversed-alignement-for-pointing-square( $alignement: $alignement-first-level-dropdown ) {
+  @if right == $alignement-first-level-dropdown {
+    left: $pointing-square-offset;
+    right: auto;
+  } @else if left == $alignement-first-level-dropdown {
+    left: auto;
+    right: $pointing-square-offset;
+  }
+}

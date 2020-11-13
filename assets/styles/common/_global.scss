@@ -1,0 +1,117 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%; // Pour faire en sorte que 16px === 1.6rem
+}
+
+body {
+  // `Flex` + `min-height: 100vh` colle le footer en bas de l'écran.
+  // (?) Ne fonctionne pas sur IE, mais c'est correct. (?)
+  @include quickflex( column, flex-start, flex-start, nowrap );
+  align-content: space-between;
+  min-height: 100vh;
+  
+  font: 400 1.6rem $font1;
+  @include smart-prop( padding-top, navbar-h );
+  
+  &.admin-bar {
+    @include smart-prop( min-height, 'calc( 100vh - ', admin-bar-h ,')' );
+  }
+  
+  &:not(.user-is-tabbing) {
+    button:focus,
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+    }
+  }
+  
+  > div,
+  > header,
+  > footer {
+    flex: 0 1 auto;
+  }
+
+  > .site-header,
+  > .content-container,
+  > .site-footer {
+    width: 100%;
+  }
+
+  > .content-container {
+    flex: 1 1 auto;
+  }
+}
+
+strong {
+  font-weight: 700;
+}
+
+em {
+  font-style: italic;
+}
+
+sup,
+sub {
+  font-size: 0.7em;
+}
+sup {
+  vertical-align: sup;
+}
+sub {
+  vertical-align: sub;
+}
+
+.sr-only {
+  @include sr-only;
+}
+
+// Remove clickable link when not on touchscreen
+// .no-touchevents [href^="fax"],
+// .no-touchevents [href^="tel"] {
+//   pointer-events: none !important;
+//   text-decoration: none !important;
+//   color: inherit !important;
+// }
+
+
+table {
+  thead {
+    tr {
+      background-color: $primary;
+      color: #fff;
+      text-align: left;
+      th {
+        padding: 15px;
+        border-right: 1px solid $borders;
+        font: 700 1.5rem $font1;
+      }
+    }
+  }
+  tbody, tfoot {
+    border-top: 1px solid $borders;
+    tr{
+      border-bottom: 1px solid $borders;
+
+      > td { 
+        padding: 10px 20px;
+        border-right: 1px solid $borders;
+        font: 400 1.4rem $font1;
+
+        &:first-child{
+          border-left: 1px solid $borders;
+        }
+      }
+
+    }
+  }
+  tfoot{
+    tr > td{
+    font-weight:700;}
+  }
+}

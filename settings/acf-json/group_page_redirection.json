@@ -1,0 +1,67 @@
+{
+    "key": "group_redirect",
+    "title": "Page Redirect",
+    "fields": [
+        {
+            "key": "field_vtx_5d532080234e2",
+            "label": "Notice",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "message": "<div class='components-notice is-warning'><div class='components-notice__content'>This page is set to redirect to the given URL below. No content will be displayed<\/div><\/div>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
+            "key": "field_vtx_5d531f5c86e75",
+            "label": "Redirect URL",
+            "name": "page_redirect_url",
+            "type": "link",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "return_format": "url"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-redirect.php"
+            }
+        ]
+    ],
+    "menu_order": -1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [
+        "permalink",
+        "the_content",
+        "discussion",
+        "comments",
+        "author",
+        "format",
+        "page_attributes",
+        "send-trackbacks"
+    ],
+    "active": 1,
+    "description": "",
+    "modified": 1565730173
+}

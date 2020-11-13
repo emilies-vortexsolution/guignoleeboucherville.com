@@ -1,0 +1,126 @@
+.vtx-fselect {
+  cursor: pointer;
+  @include smart-prop('height', input-h);
+  border: 1px solid $borders;
+  background: white;
+  font-size: 1.4rem;
+  
+  &.opened {
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
+  }
+  
+  .checkbox_container {
+    
+    input {
+      @include sr-only;
+      display: block;
+    }
+    
+  }
+}
+
+.vtx-fselect-inner {
+  height: 100%;
+}
+
+.vtx-fselect__active-choices {
+  @include quickflex( row, space-between, center, nowrap );
+  height: 100%;
+}
+
+.vtx-fselect__active-choices__label {
+  flex: 1 1 auto;
+  padding: 0 0 0 20px;
+  
+}
+.vtx-fselect__active-choices__label-extra-wrapper {
+  flex: 1 1 auto;
+  padding: 0 20px 0 0;
+}
+
+.vtx-fselect__dropdow-icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  max-height: 100%;
+  width: 40px;
+  border-left: 1px solid $borders;
+  
+  &::after{
+    @include icomoon($icon-arrow-down);
+    font-size: 0.7rem;
+    transition: $gen-t transform;
+    
+    .opened & {
+      transform: rotate(180deg);
+    }
+  }
+  
+}
+
+.vtx-fselect__dropdown {
+  display: none;
+  background: white;
+  border: 1px solid $borders;
+  position: relative;
+  
+  .opened & {
+    display: block;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.25);
+  }
+}
+
+.vtx-fselect__dropdown__search-wrapper {
+  @include smart-prop( height, input-h );
+}
+
+input[type="search"].vtx-fselect__dropdown__search{
+  width: 100%;
+  @include smart-prop( height, input-h );
+  border-radius: 0;
+  border:0;
+  padding: 0 20px;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+
+.vtx-fselect__dropdown__options-wrapper {
+  position: relative;
+  overflow: auto;
+  max-height: 200px;
+  background: white;
+}
+
+.vtx-fselect__dropdown__options__input-wrapper {
+  // padding: 15px 20px;
+  border-bottom: 1px solid $borders;
+  &:last-child{
+    border-bottom: 0;
+  }
+  
+  &.hide-when-no-results {
+    display: none;
+    cursor: auto;
+    
+    .no-results & {
+      display: block;
+    }
+  }
+}
+
+.vtx-fselect__dropdown__options__label {
+  padding: 10px 20px;
+  display:block;
+  width: 100%;
+}
+.vtx-fselect__dropdown__options__label--no-results {
+  display: none;
+  cursor: auto;
+  
+  .no-results & {
+    display: block;
+  }
+}

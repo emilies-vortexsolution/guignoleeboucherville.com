@@ -1,0 +1,33 @@
+{
+  "name": "vortex/vortexsolution.com",
+  "type": "wordpress-plugin",
+  "require": {
+    "jjgrainger/posttypes": "^2.0",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Vortex\\": "inc/vendor/Vortex"
+    }
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "*",
+    "wp-coding-standards/wpcs": "2.*",
+    "phpmd/phpmd": "2.*",
+    "phpstan/phpstan": "*",
+    "phpunit/phpunit": "^7",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0"
+  },
+  "scripts": {
+    "phpcs": "phpcs -p -s --report=summary --colors ./ --standard=./phpcs.ruleset.xml --extensions=php",
+    "phpcbf": "phpcbf -p -s -v ./ --standard=./phpcs.ruleset.xml --extensions=php",
+    "phpmd": "phpmd ./ ansi ./phpmd.ruleset.xml --suffixes php --exclude /tests,/vendor,/node_modules",
+    "phpstan": "phpstan analyse",
+    "phpunit": "phpunit",
+    "ci": [
+      "phpcs -p -s --report=summary --colors ./ --standard=./phpcs.ruleset.xml --extensions=php",
+      "phpmd ./ ansi ./phpmd.ruleset.xml --suffixes php --exclude /tests,/vendor,/node_modules",
+      "phpunit"
+    ]
+  }
+}

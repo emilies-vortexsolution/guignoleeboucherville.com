@@ -1,0 +1,438 @@
+/**
+* Redonner la bonne valeur de variable par rapport au media-queries parent.
+* Si une valeur nuérique est donné à la place de $media-query-size, on essaie de redonner la valeur la plus près.
+*
+* @var $name : String, le nom de la variable responsive qu'on cherche
+* @var $media-query-size : String, la valeur de media-queries qu'on cherche
+*/
+@function get-smart-breakpoint( $name, $media-query-size: false ) {
+    
+    $varMap: map-get($smart-variables, $name);
+
+    @if( null == $varMap ) {
+        // Si la variable n'existe pas, on retourne une erreur.
+        @return false;
+        
+        // La variable existe si on passe cette étape.
+    } @else {
+        // On commence par vérifier si la variable demandé est une map.
+        @if( 'map' != type-of($varMap) ) {
+            // On retourne cette varialbe si non puisqu'on considère qu'elle n'a pas d'autre valeur.
+            @return $varMap;
+        } 
+        
+        // Sinon, on vérifie si une valeure est associée à la taille demandé.
+        @if( 'string' == type-of($media-query-size) ) {
+            // On récupère 
+            @if map-has-key($varMap, $media-query-size) {
+                @return map-get($varMap, $media-query-size);
+            }
+            
+            // Rendu là, on transforme le titre de la taille en sa valeur.
+            $media-query-size: get-media-query-size-by-name($media-query-size);
+        }
+
+
+        // C'est possiblement une valeur en px pour comparer à une valeur possible des media-queries.
+        @if( 'number' == type-of($media-query-size) ) {
+            // On redonne la valeur la plus proche vers le bas
+            $smallestResult: 99999;
+            $valueLinkedToSmallestResult: false;
+            @each $mq, $val in $varMap {
+
+                $mqVal: get-media-query-size-by-name($mq);
+
+                @if 'number' == type-of($mqVal) {
+
+                    $result: $media-query-size - $mqVal;
+
+                    @if 0 <= $result and $smallestResult > $result {
+                        $smallestResult: $result;
+                        $valueLinkedToSmallestResult: $val;
+                    }
+                }
+
+            }
+
+            // On retourne la valeur la plus proche trouvé seulement si ce n'est pas false.
+            @if $valueLinkedToSmallestResult {
+                @return $valueLinkedToSmallestResult;
+            }
+
+        }
+
+        // Autrement, il n'a pas donné de valeurs ou aucune n'existe, donc on donne la première qu'on peut trouver dans la map.
+        @each $key, $value in $varMap {
+            @return $value;
+        }
+    }
+    
+    @error "Function vr : Ben voyons? Comment t'as fait pour te rendre là?";
+}
+
+/**
+* get-media-query-size-by-name
+* Donner la valeur d'une taille dans la map $media-query-sizes.
+*/
+@function get-media-query-size-by-name( $name ) {
+    
+  @if map-has-key($media-query-sizes, $name) {
+      @return map-get($media-query-sizes, $name);
+  } 
+  @return 0;
+
+}
+
+/**
+* Vérifier si c'est une valeure brute ou une variable responsive
+* (?) Accepte les même arguments que get-smart-breakpoint() (?)
+*/
+@function is-calc-symbol( $value ) {
+    @if( 'string' == type-of($value) ) {
+        @if null == index( "*" "-" "+" "/" "%", $value ) {
+            @return false;
+        }
+        
+        @return true;
+    }
+
+    @return false;
+}
+
+/**
+* Vérifier si c'est une valeure brute ou une variable responsive et passe en revue ses media-queries pour retomber sur la précédente en cas d'échec.
+* @var $val : Le nom de la variable responsive ou une valeur quelconque
+*/
+@function get-val-with-fallback( $val, $mqList, $mqAct: base ) {
+
+    @if( 'list' == type-of($val) ) {
+        @return recursive-list-calc( $val, $mqList, $mqAct );
+
+    } @else if( 'number' == type-of($val) ) {
+        @return $val;
+
+    } @else if( 'string' == type-of($val) ) {
+        $varMap: map-get($smart-variables, $val);
+        $result: null;
+        @if( 'map' == type-of($varMap) ) {
+            // @error $mqAct;
+            // Retrouver la position de la media-queries actuelle dans la loop
+            $indexMq: index( $mqList, $mqAct );
+
+            @while $indexMq > 0 {
+                
+                @if( map-has-key( $varMap, nth($mqList, $indexMq) )) {
+                    // VICTOIRE: nth($mqList, $indexMq);
+                    
+                    $result: get-smart-breakpoint( $val, nth($mqList, $indexMq));
+                    
+                    // Arrêter la boucle puisqu'on a trouvé une clé
+                    $indexMq: -1;
+                }
+
+                $indexMq: $indexMq - 1;
+            }
+        } @else if false != $val {
+            $result: get-smart-breakpoint($val, $mqAct);
+            @if false == $result {
+                $result: $val;
+            }
+        }
+
+        @return $result;
+    }
+
+    @return false;
+}
+
+@function calc-result-symbol-val( $x, $symbol, $y ) {
+    
+    $result: 0;
+    @if( '*' == $symbol ) {
+        $result: $x * strip-units($y);
+        
+    } @else if( '/' == $symbol ) {
+        $result: $x / strip-units($y);
+        
+    } @else if( '+' == $symbol ) {
+        $result: $x + $y;
+        
+    } @else if( '-' == $symbol ) {
+        $result: $x - $y;
+        
+    } @else if( '%' == $symbol ) {
+        $result: $x % strip-units($y);
+    }
+    
+    // Redonner le système d'unité
+    @if '' == unit($result) {
+        // Seulement faire la condition au $y vue que c'est le seul qui passe sous strip-unit
+        @if '' != unit($y) {
+            $result: $result - ($y - $y);
+        }
+    }
+    
+    @return $result;
+}
+
+/**
+* Créer une map des media-queries utilisé par les variables responsives.
+*
+* (?) v1.1.0 : Récursif s'il y a une liste (?)
+*/
+@function create-common-mq-map( $listParam, $skipMerge: false ) {
+    
+    // Faire une énorme liste avec chaque taille de media-queries pour chaque variables responsives
+    $mqList: ();
+    @each $calcItem in $listParam {
+        
+        $mqListToJoin: null;
+
+        // Si jamais c'est une liste de calcul, on sort ses taille de media queries de façon récursive
+        @if 'list' == type-of($calcItem) {
+            $mqListToJoin: create-common-mq-map($calcItem, true);
+        } @else {
+            // Autrement, on ajoute chaque mq de la possible responsive-vars à la liste
+            $mqListToJoin: to-list( map-get($smart-variables, $calcItem), 'keys' );
+        }
+
+        $mqList: join($mqList, $mqListToJoin);
+        
+    }
+
+
+    @if $skipMerge {
+        @return $mqList;
+    }
+
+    // Créer une seule map avec des valeurs vide se fiant à la liste $mqList
+    $mqMap: (base: 0);
+    @each $mqOfficial, $mqPx in $media-query-sizes {
+        @each $mqCalc, $calcVal in $mqList {
+            @if( $mqOfficial == $mqCalc ) {
+                $mqMap: map-merge($mqMap, ($mqOfficial: $mqPx ));
+            }
+        } 
+    }
+
+    @return $mqMap;
+}
+
+/**
+ * On veut ajouter une valeure à l'intérieur d'un plusieurs maps imbriquées.
+ * La valeur cré sa propre map ou se fond dans une map déjà fait.
+ * Exemple : Si on essaie d'ajouder "padding: 5px" à ".un-selecteur"
+ *   (sm: (.un-selecteur: (margin: 10px, padding: 5px))
+ */
+@function recursive-map-merge( $parentMap, $keyToFind, $valueToMerge ) {
+    
+    @if map-has-key( $parentMap, $keyToFind ) {
+        $existingValue: map-get( $parentMap, $keyToFind );
+        
+        $finalValueToMerge: $valueToMerge;
+        @if( "map" == type-of($existingValue) ) {
+            @each $key, $value in $valueToMerge {
+                $finalValueToMerge: recursive-map-merge($existingValue, $key, $value);
+            }
+        }
+
+        @return map-merge( $parentMap, ($keyToFind: $finalValueToMerge) );
+
+    } @else {
+        @return map-merge( $parentMap, ($keyToFind: $valueToMerge) );
+    }
+}
+
+/**
+ * @param $mqList : Liste de tailles de media queries commune aux éléments du calcul
+ */
+@function recursive-list-calc($calc, $mqList, $mqAct: 'base') {
+    $result: get-val-with-fallback(nth($calc, 1), $mqList, $mqAct);
+
+    $nbCalc: length($calc);
+    $i: 2;
+    @while $i <= $nbCalc {
+        
+        @if( is-calc-symbol( nth($calc, $i) ) ) {
+            // C'est un symbol. On peut commencer le calcul «result symbole nb»
+            
+            @if( $nbCalc >= $i + 1 ) {
+                // On fait le calcul seulement si il y a un autre élément dans la liste
+                                        
+                // Vérifier si la media-queries existe pour cette valeure. Remonter jusqu'à une valeur qui existe. (Base si aucune n'existe).
+                $val: get-val-with-fallback( nth($calc, $i + 1), $mqList, nth($mqList, index($mqList, $mqAct)) );
+                
+                $symbol: nth($calc, $i);
+                
+                $result: calc-result-symbol-val( $result, $symbol, $val );
+            } // fin cond nbCalc
+            
+            $i: $i + 1;
+        }
+        $i: $i + 1;
+    } // fin boucle calcul
+    
+    @return $result;
+}
+
+/*
+* FONCTION EXTERNE MODIFIÉE : https://gist.github.com/Jakobud/744b98b629abe018766f6d506a2e92ae
+*/
+@function mq-list-sort($list) {
+
+    $sortedlist: ();
+    @while length($list) > 0 {
+        $value: nth($list,1);
+
+        @each $item in $list {
+            @if get-media-query-size-by-name($item) < get-media-query-size-by-name($value) {
+                $value: $item;
+            }
+        }
+        $sortedlist: append($sortedlist, $value, 'space');
+        $list: list-remove($list, index($list, $value));
+    }
+    @return $sortedlist;
+}
+
+/*
+* FONCTION EXTERNE MODIFIÉE : https://gist.github.com/Jakobud/a0ac11e80a1de453cd86f0d3fc0a1410
+*/
+@function mq-map-sort-by-keys-value($map) {
+    $keys: mq-list-sort(map-keys($map));
+
+    $sortedMap: ();
+    @each $key in $keys {
+      $sortedMap: map-merge($sortedMap, ($key: map-get($map, $key)));
+    }
+    @return $sortedMap;
+}
+
+/*
+* FONCTION EXTERNE : https://stackoverflow.com/questions/12328259/how-do-you-strip-the-unit-from-any-number-in-sass
+*/
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+/*
+* FONCTION EXTERNE : https://hugogiraudel.com/2014/04/28/casting-map-into-list/
+*/
+@function to-list($value, $keep: 'both') {
+  $keep: if(index('keys' 'values', $keep), $keep, 'both');
+
+  @if type-of($value) == 'map' {
+    $keys: ();
+    $values: ();
+
+    @each $key, $val in $value {
+      $keys: append($keys, $key);
+      $values: append($values, $val);
+    }
+
+    @if $keep == 'keys' {
+      @return $keys;
+    } @else if $keep == 'values' {
+      @return $values;
+    } @else {
+      @return zip($keys, $values);
+    }
+  }
+
+  @return if(type-of($value) != 'list', ($value,), $value);
+}
+
+/*
+* FONCTION EXTERNE : https://gist.github.com/Jakobud/744b98b629abe018766f6d506a2e92ae
+*/
+@function list-sort($list) {
+
+    $sortedlist: ();
+    @while length($list) > 0 {
+        $value: nth($list,1);
+        @each $item in $list {
+
+            @if $item < $value {
+                $value: $item;
+            }
+        }
+        $sortedlist: append($sortedlist, $value, 'space');
+        $list: list-remove($list, index($list, $value));
+    }
+
+    @return $sortedlist;
+}
+
+/*
+* FONCTION EXTERNE : https://gist.github.com/Jakobud/ec056b52f3673cc369dc97f2c2428424
+*/
+@function list-remove($list, $index) {
+    $newList: ();
+    @for $i from 1 through length($list) {
+        @if $i != $index {
+            $newList: append($newList, nth($list,$i), 'space');
+        }
+    }
+    @return $newList;
+}
+
+/*
+* FONCTION EXTERNE : https://gist.github.com/Jakobud/a0ac11e80a1de453cd86f0d3fc0a1410
+* (?) Le nom original a été changé pour map-sort-by-keys (?)
+*/
+@function map-sort-by-keys($map) {
+    $keys: list-sort(map-keys($map));
+
+    $sortedMap: ();
+    @each $key in $keys {
+      $sortedMap: map-merge($sortedMap, ($key: map-get($map, $key)));
+    }
+    @return $sortedMap;
+}
+
+/*
+* FONCTION EXTERNE : https://gist.github.com/Jakobud/a0ac11e80a1de453cd86f0d3fc0a1410
+*/
+@function map-sort-by-values($map) {
+    // Transform map to zipped list
+    $keys: ();
+    $values: ();
+  
+    @each $key, $val in $map {
+      $keys: append($keys, $key);
+      $values: append($values, $val);
+    }
+  
+    $list: zip($keys, $values);
+  
+    $sortedMap: ();
+    @while length($list) > 0 {
+  
+      // Find smallest pair
+      $smallestPair: nth($list, 1);
+      @each $pair in $list {
+        $value: nth($pair, 2);
+        $smallestValue: nth($smallestPair, 2);
+        @if $value < $smallestValue {
+          $smallestPair: $pair;
+        }
+      }
+  
+      // Add smallest pair to sorted map
+      $key: nth($smallestPair, 1);
+      $value: nth($smallestPair, 2);
+      $sortedMap: map-merge($sortedMap, ($key: $value));
+  
+      // Remove from list smallest pair
+      $smallestPairIndex: index($list, $smallestPair);
+      $newList: ();
+      @for $i from 1 through length($list) {
+        @if $i != $smallestPairIndex {
+          $newList: append($newList, nth($list, $i), "space");
+        }
+      }
+      $list: $newList;
+    }
+  
+    @return $sortedMap;
+}

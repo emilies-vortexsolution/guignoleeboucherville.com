@@ -1,0 +1,7 @@
+.nav {
+  @include quickflex( row, flex-start, flex-start, wrap );
+  
+  > li {
+    flex: 0 0 auto;
+  }
+}

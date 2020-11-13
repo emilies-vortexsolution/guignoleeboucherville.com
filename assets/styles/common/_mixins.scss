@@ -1,0 +1,230 @@
+@mixin placeholder() {
+  &::-webkit-input-placeholder { @content } // Safari, Chrome and Opera
+  &:-moz-placeholder { @content } // Firefox 18-
+  &::-moz-placeholder { @content } // Firefox 19+
+  &:-ms-input-placeholder { @content } // IE 10+
+  &::-ms-input-placeholder { @content } // Edge
+  &:placeholder-shown { @content } // Standard one last!
+}
+
+@mixin icomoon( $icon: false ) {
+    @if $icon { content: $icon; }
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin clearfix {
+  *zoom: 1;
+  &:before, &:after { content: " "; display: table; }
+  &:after { clear: both; }
+}
+
+// Only display content to screen readers. A la Bootstrap 4.
+//
+// See: http://a11yproject.com/posts/how-to-hide-content/
+
+@mixin sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+// Use in conjunction with .sr-only to only display content when it's focused.
+//
+// Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
+//
+// Credit: HTML5 Boilerplate
+
+@mixin sr-only-focusable {
+  &:active,
+  &:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+  }
+}
+
+/**
+* Rapidemment apperler les fonctions flex souvent utilisé à l'init
+*/
+@mixin quickflex( $direction: row, $justify: space-between, $align: center, $wrap: nowrap ) {  
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+/**
+* Faire de l'élément un conteneur centré.
+*/
+@mixin aligndefault() {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $mw-aligndefault;
+}
+@mixin alignwide( ) {
+  margin-left: auto;
+  margin-right: auto;
+  max-width:  $mw-alignwide;
+}
+
+/**
+ * Fait une boucle à l'intérieur d'une map: ( nom média : couleur média )
+ *
+ * (?) La mixin assume que ce sont des liens. (?)
+ * (!) Dépendance à une map nommé $social-media-colors (!)
+ */
+ @mixin social-media-link-style {
+    
+  @each $mediaName, $mediaColor in $social-media-colors {
+    
+    .#{$mediaName} {
+      background: black;
+      transition: background $gen-t;
+      
+      &:hover {
+        background-color: $mediaColor;
+      }
+    }
+    
+  }
+}
+
+
+
+/// Adds width for the nav or subnav that is previous to an extra column of childless links.
+/// 
+/// @param {number} $max-cols - The higher number of columns that the container can have (including that extra column). Use minimum 2.
+/// @param {string} $nav-item-selector - A selector wrapped in quotes like: '> .nav-item'.
+///   Default: false. If false, there won't be any style applied to the children of the container.
+///
+/// @output Width with .has-x-cols classes around and all wrapped in media queries.
+///
+@mixin smart-width-for-nav-with-extra-col-and-max-cols-of( $max-cols, $nav-item-selector: false ) {
+
+  // Default maximum columns count is 6.
+  // Add smart-variables like `cols-6-nb` higher than 6 if needs be.
+  $max-cols: get-default-and-error-handling-for-smart-width-nav-with-extra-col-having-max-cols-of( $max-cols );
+  
+  
+  &.has-0-cols {
+    width: 0;
+  }
+  
+  
+  // We cannot use smart-prop here because the $max-cols value may be lower thant $i at certain breakpoint.
+  // So we have to manyally loop through values.
+  $cols-width-map: map-get($smart-variables, 'cols-#{$max-cols}-nb');
+  
+  @each $mq, $max-cols-for-mq in $cols-width-map {
+
+    @if $mq == 'base' {
+      @include max-cols-width-logic-and-loop( $max-cols-for-mq, $nav-item-selector );
+    } 
+    @else {
+      @include __MIN( $mq ) {
+        @include max-cols-width-logic-and-loop( $max-cols-for-mq, $nav-item-selector );
+      }
+    }
+  }
+}
+
+/// A helper mixin for smart-width-for-nav-with-extra-col-and-max-cols-of.
+/// It has no error handling nor does it setup .has-0-cols.
+/// To use only for precision insert, otherwise use smart-width-for-nav-with-extra-col-and-max-cols-of
+///
+/// @param {number} $max-cols
+/// @param {string} $nav-item-selector
+///
+/// @output Width with .has-x-cols classes around.
+/// 
+@mixin max-cols-width-logic-and-loop( $max-cols, $nav-item-selector ) {
+  
+  // Make place for that extra column by diminishing by one.
+  // $max-cols must at least be 2 to attain expected result.
+  $cols-minus-extra: $max-cols - 1;
+  @if $cols-minus-extra <= 0 {
+    $cols-minus-extra: 1;
+  }
+  
+  $default-width: 100% / $max-cols * $cols-minus-extra;
+  @if $default-width == 0 {
+    $default-width: 100%;
+  }
+
+  width: $default-width;
+  
+  
+  // Add width for children items.
+  $default-item-width: 100% / $cols-minus-extra;
+  @if $nav-item-selector {
+    & #{$nav-item-selector} {
+      width: $default-item-width;
+    }
+  }
+  
+  
+  @for $i from 1 through $max-cols {
+    
+    &.has-#{$i}-cols {
+      // Add the right width depending on the number of cols...
+      @if $i < $max-cols {
+        
+        $that-width: 100% / $max-cols * $i;
+        @if $default-width not $that-width {
+          width: $that-width;
+        }
+        
+        // Add width for children items.
+        @if $nav-item-selector {
+            
+          & #{$nav-item-selector} {
+            width: 100% / $i;
+          }
+        }
+      }
+      // ... otherwise we're at the breakpoint where all is one column.
+      @else if $max-cols == 1 {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@function get-default-and-error-handling-for-smart-width-nav-with-extra-col-having-max-cols-of( $max-cols ) {
+  // Default maximum columns count is 6.
+  // Add smart-variables like `cols-6-nb` higher than 6 if needs be.
+  @if $max-cols > 6 {
+    @warn '$max-cols is set to #{$max-cols} which is higher than the default number of smart-variables `cols-X-nb` set. Add some more and change this warning trigger value or lower the number of columns.' --trace;
+    
+    @return 6;
+  }
+  @else if $max-cols == 1 {
+    @warn '$max-cols is set to #{$max-cols}. It needs at least 2 columns. Otherwise, the use of this mixin is not necessary. You might just want to do `width: 100%` instead.' --trace;
+  }
+  @else if $max-cols <= 0 {
+    @warn 'That won\'t do. $max-cols is set to #{$max-cols} which is physically impossible. Make it higher or the universe will collapse. Set it to 2 at least.' --trace;
+  }
+  
+  // All good. Returns the given count.
+  @return $max-cols;
+}

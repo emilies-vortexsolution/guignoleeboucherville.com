@@ -1,0 +1,117 @@
+{
+    "key": "group_post_type_link_to_page",
+    "title": "Liaison entre pages et types de publication",
+    "fields": [
+        {
+            "key": "field_vtx_5d53112bf9d56",
+            "label": "Liaisons",
+            "name": "page_and_post_type_links",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 1,
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Ajouter une liaison",
+            "sub_fields": [
+                {
+                    "key": "field_vtx_5d531146f9d57",
+                    "label": "Page lié",
+                    "name": "page_linked_to_post_type",
+                    "type": "post_object",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "admin_only": 0,
+                    "post_type": [
+                        "page"
+                    ],
+                    "taxonomy": "",
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "return_format": "object",
+                    "ui": 1
+                },
+                {
+                    "key": "field_vtx_5d5311fcf9d58",
+                    "label": "Post type lié",
+                    "name": "post_type_linked_to_page",
+                    "type": "post_types_list_field",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "admin_only": 0,
+                    "allow_multiple": 0,
+                    "disallowed_post_types": [
+                        "page",
+                        "attachment",
+                        "revision",
+                        "nav_menu_item",
+                        "custom_css",
+                        "customize_changeset",
+                        "oembed_cache",
+                        "user_request",
+                        "wp_block",
+                        "acf-field-group",
+                        "acf-field",
+                        "wp_area"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_5d96802392d5a",
+            "label": "Comment appliquer la liaisons aux URL",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "message": "<p>La lisaison se fait automatiquement.<\/p>\r\n\r\n\r\n<hr style=\"margin: 1em 0;\">\r\n\r\n\r\n<h3 style=\"font-weight: 700; font-size: inherit; margin: 1em 0 0.5em;\">Contrôle avancé<\/h3>\r\n\r\n<p>Ajouter <strong>« %page_archive_uri% »<\/strong> à la règle de réécriture.<\/p>\r\n\r\n<p>Il faut l'ajouter à un endroit différent dépendamment du type d'élément :<\/p>\r\n<ul style=\"list-style-type: disc; padding-left: 1em;\">\r\n  <li>\r\n    <strong>Article par défaut :<\/strong>\r\n    <a href=\"\/options-permalink.php\">La page option des permaliens du site.<\/a>\r\n  <\/li>\r\n  <li>\r\n    <p><strong>Autres types d'élément :<\/strong><\/p>\r\n    <p><strong>À moins d'utiliser une extension comme « Toolset » ou « Custom Post Type UI », il faut modifier les options dans le code.<\/strong><\/p>\r\n    \r\n<pre style=\"color:#d1d1d1;background:#151515;\">\r\n  <span style=\"color:#f6c1d0; background:#151515; \">&lt;?php<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">$post_type_options<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#e66170; background:#151515; font-weight:bold; \">array<\/span><span style=\"color:#d2cd86; background:#151515; \">(<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;<\/span><span style=\"color:#00c4c4; background:#151515; \">'rewrite'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#d2cd86; background:#151515; \">&gt;<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#e66170; background:#151515; font-weight:bold; \">array<\/span><span style=\"color:#d2cd86; background:#151515; \">(<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;&nbsp;&nbsp;<\/span><span style=\"color:#00c4c4; background:#151515; \">'with_front'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#d2cd86; background:#151515; \">&gt;<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#0f4d75; background:#151515; \">false<\/span><span style=\"color:#d2cd86; background:#151515; \">,<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;&nbsp;&nbsp;<\/span><span style=\"color:#00c4c4; background:#151515; \">'slug'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#d2cd86; background:#151515; \">&gt;<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#00c4c4; background:#151515; \">'<\/span><span style=\"color:#02d045; background:#151515; \">%<\/span><span style=\"color:#00c4c4; background:#151515; \">page_archive_uri<\/span><span style=\"color:#02d045; background:#151515; \">%<\/span><span style=\"color:#00c4c4; background:#151515; \">'<\/span><span style=\"color:#d2cd86; background:#151515; \">,<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#9999a9; background:#151515; \">\/\/ Utilisé comme ceci, il vaut mieux ne rien mettre et laisser le module prendre charge automatiquement.<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;<\/span><span style=\"color:#d2cd86; background:#151515; \">)<\/span><span style=\"color:#d2cd86; background:#151515; \">,<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#d2cd86; background:#151515; \">)<\/span><span style=\"color:#b060b0; background:#151515; \">;<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#9999a9; background:#151515; \">\/\/ Sa vrai utilité est pour ajouter un mot après l'URI de la page lié <\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#9999a9; background:#151515; \">\/\/ Placer le mot en avant est possible aussi, mais il n'y a encore aucune utilité trouvé à faire ça.<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">$post_type_options<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#e66170; background:#151515; font-weight:bold; \">array<\/span><span style=\"color:#d2cd86; background:#151515; \">(<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;<\/span><span style=\"color:#00c4c4; background:#151515; \">'name'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#d2cd86; background:#151515; \">&gt;<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#00c4c4; background:#151515; \">'event-articles'<\/span><span style=\"color:#d2cd86; background:#151515; \">,<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;<\/span><span style=\"color:#00c4c4; background:#151515; \">'rewrite'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#d2cd86; background:#151515; \">&gt;<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#e66170; background:#151515; font-weight:bold; \">array<\/span><span style=\"color:#d2cd86; background:#151515; \">(<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;&nbsp;&nbsp;<\/span><span style=\"color:#00c4c4; background:#151515; \">'with_front'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#d2cd86; background:#151515; \">&gt;<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#0f4d75; background:#151515; \">false<\/span><span style=\"color:#d2cd86; background:#151515; \">,<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;&nbsp;&nbsp;<\/span><span style=\"color:#00c4c4; background:#151515; \">'slug'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#d2cd86; background:#151515; \">&gt;<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#00c4c4; background:#151515; \">'events\/%page_archive_uri%\/article'<\/span><span style=\"color:#d2cd86; background:#151515; \">,<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#9999a9; background:#151515; \">\/\/ Exemple d'URL résultant : <\/span><span style=\"color:#6070ec; background:#151515; \">https:\/\/music.com\/events\/music-groups\/article\/blink182\/<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;<\/span><span style=\"color:#d2cd86; background:#151515; \">)<\/span><span style=\"color:#d2cd86; background:#151515; \">,<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#d2cd86; background:#151515; \">)<\/span><span style=\"color:#b060b0; background:#151515; \">;<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n<\/pre>\r\n  <\/li>\r\n<\/ul>\r\n\r\n\r\n\r\n<hr style=\"margin: 1em 0;\">\r\n\r\n\r\n\r\n<h3 style=\"font-weight: 700; font-size: inherit; margin: 1em 0 0.5em;\">Type d'élément hiérarchique (comme les pages)<\/h3>\r\n\r\n<p>Le module est compatible avec les types d'élément ayant des liaisons parent\/enfant.<\/p>\r\n\r\n\r\n<p>Voici les options nécessaires pour rentre un type d'élément hiérarchique<\/p>\r\n\r\n<pre style=\"color:#d1d1d1;background:#151515;\"><span style=\"color:#f6c1d0; background:#151515; \">&lt;?php<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#9999a9; background:#151515; \">\/\/ Références pour toutes les options : <\/span><span style=\"color:#6070ec; background:#151515; \">https:\/\/developer.wordpress.org\/reference\/functions\/register_post_type\/<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">$post_type_options<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#e66170; background:#151515; font-weight:bold; \">array<\/span><span style=\"color:#d2cd86; background:#151515; \">(<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;<\/span><span style=\"color:#00c4c4; background:#151515; \">'hierarchical'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#d2cd86; background:#151515; \">&gt;<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#0f4d75; background:#151515; \">true<\/span><span style=\"color:#d2cd86; background:#151515; \">,<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;<\/span><span style=\"color:#00c4c4; background:#151515; \">'show_in_rest'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#d2cd86; background:#151515; \">&gt;<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#0f4d75; background:#151515; \">true<\/span><span style=\"color:#d2cd86; background:#151515; \">,<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#9999a9; background:#151515; \">\/\/ Non nécessaire, mais permet l'utilisation de Gutenberg. Ne fonctionne pas avec les articles par défauts.<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#ffffff; background:#151515; \">&nbsp;&nbsp;<\/span><span style=\"color:#00c4c4; background:#151515; \">'support'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">=<\/span><span style=\"color:#d2cd86; background:#151515; \">&gt;<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#e66170; background:#151515; font-weight:bold; \">array<\/span><span style=\"color:#d2cd86; background:#151515; \">(<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#00c4c4; background:#151515; \">'page-attributes'<\/span><span style=\"color:#ffffff; background:#151515; \"> <\/span><span style=\"color:#d2cd86; background:#151515; \">)<\/span><span style=\"color:#d2cd86; background:#151515; \">,<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n  <span style=\"color:#d2cd86; background:#151515; \">)<\/span><span style=\"color:#b060b0; background:#151515; \">;<\/span><span style=\"color:#ffffff; background:#151515; \"><\/span>\r\n<\/pre>",
+            "new_lines": "",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "post_type_link_to_page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1584485611
+}

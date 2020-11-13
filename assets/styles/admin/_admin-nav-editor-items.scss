@@ -1,0 +1,88 @@
+/// For more dashicons:
+/// @link https://developer.wordpress.org/resource/dashicons/
+
+$dashicon-mobile-phone: '\f470';
+$dashicon-a: '\f215';
+
+
+$color-red: rgb(202, 74, 31);
+$color-blue: #007cba;
+
+
+/// For normal effects represented by icons
+#menu-to-edit {
+  .menu-item-effects {
+    $icon-w: 20px;
+    $icon-p: 5px;
+    
+    span {
+      margin-right: $icon-p;
+    }
+    
+    .is-heading {
+      display: inline-block;
+      
+      &::before {
+        content: 'En-tête';
+        display: inline;
+        padding: 1px 5px;
+        background: $color-red;
+        font-size: 11px;
+        color: white;
+        text-align: center;
+        border-radius: 3px;
+      }
+    }
+    
+    .has-image {
+      display: inline-block;
+      
+      &::before {
+        content: 'Image';
+        display: inline;
+        padding: 1px 5px;
+        background: $color-red;
+        font-size: 11px;
+        color: white;
+        text-align: center;
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
+
+/// When nav item has an icon selected.
+#menu-to-edit {
+  .menu-item-title__icon {
+    margin-right: 0.5em;
+    color: $color-blue;
+  }
+}
+
+/// Menu item styles.
+#menu-to-edit {
+  
+  .menu-item {
+    
+    &.button-1 {
+      
+      .menu-item-title__icon {
+        color: white;
+      }
+      
+      .menu-item-handle {
+        background: $primary;
+        color: white;
+      }
+      
+      .menu-item-title {
+        font-weight: bold;
+      }
+      
+      .item-controls * {
+        color: white;
+      }
+    }
+  }
+}
