@@ -110,6 +110,20 @@
 }
 
 
+/// permet de créer des colonnes liées avec les smart-variables
+// se fier aux smart-variables pour assigner $colnumber et $colmargin
+@mixin columns( $colnumber: cols-3-nb, $colmargin: col-m, $marginver: 0 ) {
+  display: flex;
+  flex-wrap: wrap;
+  @include smart-prop( width, 'calc( 100% + ', ($colmargin, '*', 2), ')' );
+  @include smart-prop( margin, $marginver, ($colmargin, '*', -1) );
+
+  > * {
+    @include smart-prop( width, 'calc(', (100%, '/', $colnumber), '-', ($colmargin, '*', 2), ')' );
+    @include smart-prop( margin, $colmargin );
+  }
+}
+
 
 /// Adds width for the nav or subnav that is previous to an extra column of childless links.
 /// 

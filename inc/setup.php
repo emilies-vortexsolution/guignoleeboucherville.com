@@ -131,11 +131,6 @@ function assets() {
     wp_set_script_translations( 'sage-js', 'vtx', get_stylesheet_directory() . 'lang' );
   }
 
-  if ( search_can_be_inited() ) {
-    wp_enqueue_script( 'search-autocomplete', Assets\asset_path( 'scripts/search-autocomplete.js' ), array( 'jquery', 'wp-util' ), null, false );
-    wp_localize_script( 'search-autocomplete', 'search_options', js_search_options() );
-  }
-
   // Removed wpml admin bar css if admin bar is not displayed
   global $wp_styles;
   if ( ! is_admin() && isset( $wp_styles->registered['wpml-tm-admin-bar'] ) ) {

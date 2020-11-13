@@ -72,20 +72,5 @@ class OPTIONS_SITE {
       )
     );
 
-    if ( search_can_be_inited() ) {
-      acf_add_options_sub_page(
-        array(
-          'id'                       => "{$option_page['id']}_global_search",
-          'option_name'              => 'global_search_options',
-          'menu_slug'                => 'global_search_options',
-          'menu_title'               => _x( 'Recherche globale', 'Admin menu title', 'vtx-admin' ),
-          'page_title'               => _x( 'Recherche globale', 'Admin page title', 'vtx-admin' ),
-          'parent_slug'              => $option_page['menu_slug'],
-          'redirect_to_default_lang' => false,
-          'do_flush_rewrite'         => true,
-        )
-      );
-    }
-
   }
 }

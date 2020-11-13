@@ -58,14 +58,6 @@
             "files": [
                 "scripts/vtx-fselect.js"
             ]
-        },
-        "global-search.js": {
-            "vendor": [
-                "node_modules/fuse.js/dist/fuse.basic.min.js"
-            ],
-            "files": [
-                "scripts/search-autocomplete.js"
-            ]
         }
     },
     "config": {

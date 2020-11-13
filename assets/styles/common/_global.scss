@@ -142,11 +142,18 @@ h1,
   font-size: 3.6rem;
   font-weight: 800;
   line-height: 1.138888889;
+  @include __MIN(md){
+    font-size: 4.8rem;
+  }
 }
 
 h2,
 .heading-size-2 {
   font-size: 3.2rem;
+  color: $primary;
+  @include __MIN(md){
+    font-size: 4.8rem;
+  }
 }
 
 h3,

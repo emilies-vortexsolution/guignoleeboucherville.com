@@ -33,9 +33,8 @@ $required_files_and_folder = array(
   'titles.php',
   'utilities.php',
   'wrapper.php',
-  'search',
   //Project addition
-
+  'partner',
 );
 
 foreach ( $required_files_and_folder as $required_folder ) {

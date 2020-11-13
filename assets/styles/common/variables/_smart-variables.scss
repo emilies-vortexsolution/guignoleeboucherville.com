@@ -42,4 +42,58 @@ $smart-variables: (
     base: 46px,
     menuwordpressmobile: 32px,
   ),
+
+    //||||||||||||||||||||||||||||||||||||||||||||||||||
+  // Cols
+  //||||||||||||||||||||||||||||||||||||||||||||||||||
+  cols-1-nb: (
+    base: 1,
+  ),
+  cols-2-nb: (
+    base: 1,
+    md: 2,
+  ),
+  cols-3-nb: (
+    base: 1,
+    md: 2,
+    xl: 3,
+  ),
+  cols-4-nb: (
+    base: 1,
+    md: 2,
+    lg: 3,
+    xl: 4,
+  ),
+  cols-5-nb: (
+    base: 1,
+    md: 2,
+    xl: 3,
+    gen-mw: 5,
+  ),
+  cols-6-nb: (
+    base: 1,
+    sm: 2,
+    md: 3,
+    lg: 4,
+    gen-mw: 6,
+  ),
+  
+  cols-cta-3-nb: (
+    base: 1,
+    sm: 2,
+    xl: 3,
+  ),
+
+  // cols specifiques
+  cols-partners: (
+    base: 1,
+    xxs: 2,
+    md: 3,
+    xl: 6,
+  ),
+
+  col-m: (
+    base: 10px,
+  ),
+
 );
