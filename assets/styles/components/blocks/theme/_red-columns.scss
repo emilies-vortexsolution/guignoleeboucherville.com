@@ -22,6 +22,25 @@
     margin-top: 0;
     margin-bottom: 1.5rem;
   }
+
+  .wysiwyg{
+    .btn{
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    ol{
+      li:before{
+        color: white;
+      }
+    }
+
+    ul{
+      li:before{
+        background-color: white;
+      }
+    }
+  }
 }
 
 // premiere colonne //

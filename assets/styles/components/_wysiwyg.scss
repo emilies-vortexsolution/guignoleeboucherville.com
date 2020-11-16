@@ -11,6 +11,11 @@
       font-size: 1.8rem;
     }
 
+    &.intro{
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
   }
   
   //////////////////////////////////////////////////////
@@ -35,6 +40,11 @@
 
   // end var //
   
+  > ul,
+  > ol
+  {
+    margin-bottom: 1em;
+  }
 
   ul,
   ol {
