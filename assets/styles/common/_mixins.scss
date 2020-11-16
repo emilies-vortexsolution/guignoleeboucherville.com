@@ -125,6 +125,41 @@
 }
 
 
+@mixin underline-link($color: $secondary, $background: $secondary) {
+  position: relative;
+  padding-bottom: 3px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient($background, $background);
+  background-position: left bottom;
+  transition: background $gen-t;
+  color: $color;
+  background-size: 100% 2px;
+  display: inline;
+  
+  &.checked,
+  &:hover {
+    background-size: 0 2px;
+  }
+}
+
+@mixin underline-link-reverse($color: $secondary, $background: $secondary) {
+  position: relative;
+  padding-bottom: 2px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient($background, $background);
+  background-position: left bottom;
+  transition: background $gen-t;
+  color: $color;
+  background-size: 0 1px;
+  display: inline;
+  
+  &.checked,
+  &:hover {
+    background-size: 100% 1px;
+  }
+}
+
+
 /// Adds width for the nav or subnav that is previous to an extra column of childless links.
 /// 
 /// @param {number} $max-cols - The higher number of columns that the container can have (including that extra column). Use minimum 2.

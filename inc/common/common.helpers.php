@@ -228,6 +228,10 @@ function get_logo_url() {
   return Assets\asset_path( 'images/logo.png' );
 }
 
+function get_theme_asset_url( $image_rel_path ) {
+  return Assets\asset_path( $image_rel_path );
+}
+
 /**
  * Get lastest standard (2018) of HTML surrounding link with phone number.
  *

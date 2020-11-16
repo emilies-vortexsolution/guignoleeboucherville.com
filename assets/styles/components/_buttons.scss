@@ -2,12 +2,15 @@
   display:inline-block;
   background-color: #F88D10;
   box-shadow: 0 5px 0 0 #D77A0E;
-  color: white;
   padding: 12px 25px;
   border-radius: 25px;
   font: 700 1.5rem $font1;
   text-transform: uppercase;
   transition: all $gen-t;
+  
+  &, .entry-content &{
+    color: white;
+  }
 
   &:hover{
     box-shadow: 0 3px 0 0 #D77A0E;

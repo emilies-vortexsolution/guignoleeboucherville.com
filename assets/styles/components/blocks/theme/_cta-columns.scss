@@ -1,0 +1,176 @@
+.block-cta-columns{
+  position: relative;
+  overflow:hidden;
+}
+
+.block-cta-columns__background--left,
+.block-cta-columns__background--right
+{
+  width: 50%;
+  position: absolute;
+  opacity: 0.1;
+
+  @include __MIN(md){
+    width: 200px;
+  }
+
+  @include __MIN(xl){
+    width: 300px;
+  }
+
+  svg{
+    fill: #288BA0;
+    width: 100%;
+  }
+}
+
+.block-cta-columns__background--left{
+  top: -30px;
+  left: -40px;
+}
+
+.block-cta-columns__background--right{
+  right: -40px;
+  bottom: -30px;
+}
+
+.block-cta-columns__inner{
+  position: relative;
+}
+
+/* columns */
+
+.cta-columns__columns{
+  @include quickflex(row, flex-start, stretch, wrap);
+  @include __MIN(xl){
+    width: calc(100% - 60px);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* tous les ctas */
+
+.cta-columns__cta{
+  width: 100%;
+  flex: 0 0 auto;
+  padding: 40px 20px;
+  margin-bottom: 20px;
+
+  &:first-child{
+    margin-top: 20px;
+  }
+
+  @include __MIN(md){
+    padding: 70px 40px;
+    width: calc(50% - 60px);
+    margin: 30px;
+    &:first-child{
+      margin-top: 30px;
+    }
+  }
+
+  @include __MIN(xl){
+    padding: 140px 40px;
+  }
+
+  .wysiwyg{
+    p:last-child{
+      margin-bottom: 0;
+    }
+  }
+}
+
+.cta-columns__cta__inner{
+  @include quickflex(row, flex-start, center, wrap);
+  height: 100%;
+  position: relative;
+}
+
+.cta-columns__cta__col--image{
+  width: 30%;
+  flex: 0 0 auto;
+  margin-bottom: 1rem;
+  
+  @include __MINMAX(xs, md){
+    width: 30%;
+    padding-right: 40px;
+    margin-bottom: 0;
+  }
+  
+  @include __MIN(lg){
+    width: 30%;
+    padding-right: 40px;
+    margin-bottom: 0;
+  }
+
+  img{
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.cta-columns__cta__col--main{
+  width: 100%;
+  flex: 0 0 auto;
+
+  @include __MINMAX(xs, md){
+    width: 70%;
+  }
+
+  @include __MIN(lg){
+    width: 70%;
+  }
+}
+
+.cta-columns__cta__title{
+  &, .entry-content &{
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font: 700 2.2rem $font1;
+    font-style: italic;
+    color: $text;
+  }
+}
+
+/* ctas impairs */
+
+.cta-columns__cta:nth-child(odd){
+  background-color: $background;
+
+  .cta-columns__cta__background{
+    display: none;
+  }
+}
+
+/* ctas pairs */
+
+.cta-columns__cta:nth-child(even){
+  background-color: $red-dark;
+  color: white;
+  position: relative;
+  overflow: hidden;
+
+  .cta-columns__cta__title{
+    color: white;
+    @include __MIN(md){
+      font-size: 3.2rem;
+    }
+  }
+
+  .cta-columns__cta__background{
+    display: block;
+    background-size: 100%;
+    position: absolute;
+    width: 40%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-25%);
+    left: 0;
+    opacity: 0.1;
+
+    svg{
+      fill: white;
+      width: 100%;
+    }
+  }
+}

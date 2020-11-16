@@ -1,0 +1,23 @@
+.decorated-heading{
+  text-align: center;
+  @include quickflex(row, center, center, nowrap);
+  @include smart-prop('margin-bottom', sct-m-small);
+  
+  &.block-heading{
+    @include smart-prop('margin-top', sct-m);
+  }
+
+  svg{
+    fill: $secondary;
+    width: 40px;
+    flex: 0 0 auto;
+  }
+
+  .decorated-heading__title,
+  .is-style-decorated
+  {
+    width: auto;
+    flex: 0 1 auto;
+    margin: 0 2rem;
+  }
+}

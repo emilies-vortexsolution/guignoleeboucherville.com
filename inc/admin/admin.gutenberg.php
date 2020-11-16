@@ -24,3 +24,19 @@ add_theme_support(
     ),
   )
 );
+
+// Wrap file block in a div
+
+function vtx_heading_decorated_style( $block_content, $block ) {
+  if ( 'core/heading' === $block['blockName'] ) {
+    $content  = '<div class="block-heading decorated-heading">';
+    $content .= get_file_contents_by_url( get_theme_asset_url( 'images/svg/guy-gauche.svg' ) );
+    $content .= $block_content;
+    $content .= get_file_contents_by_url( get_theme_asset_url( 'images/svg/guy-droite.svg' ) );
+    $content .= '</div>';
+    return $content;
+  }
+  return $block_content;
+}
+
+add_filter( 'render_block', 'vtx_heading_decorated_style', 10, 2 );

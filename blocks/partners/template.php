@@ -14,11 +14,15 @@ $partners  = get_posts(
     <div class="block-partners__background--left" role="presentation"></div>
     <div class="block-partners__background--right" role="presentation"></div>
     <div class="block-partners__inner container">
-      <?php if ( ! empty( $sct_title ) ) { ?>
-        <div class="block-partners__header">
-          <h2 class="block-partners__title"><?php echo esc_html( $sct_title ); ?></h2>
-        </div>
-      <?php } ?>
+      <?php
+      get_template_part(
+        'templates/decorated-heading',
+        null,
+        array(
+          'title' => $sct_title,
+        )
+      );
+      ?>
       <div class="listing--partners">
         <?php
         foreach ( $partners as $partner ) :

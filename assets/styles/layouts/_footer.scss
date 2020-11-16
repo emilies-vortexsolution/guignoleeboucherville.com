@@ -9,6 +9,6 @@
   }
 
   a{
-    color: white;
+    @include underline-link-reverse(white, white);
   }
 }

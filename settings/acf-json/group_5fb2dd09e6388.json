@@ -1,9 +1,9 @@
 {
-    "key": "group_5fb2caa1527e7",
-    "title": "Bloc - Colonnes informationnelles",
+    "key": "group_5fb2dd09e6388",
+    "title": "Bloc - Colonnes d'appels à l'action",
     "fields": [
         {
-            "key": "field_5fb2cab34f5c9",
+            "key": "field_5fb2dd1a979c1",
             "label": "",
             "name": "",
             "type": "message",
@@ -16,12 +16,12 @@
                 "id": ""
             },
             "admin_only": 0,
-            "message": "<h2>Colonnes informationnelles<\/h2>",
+            "message": "<h2>Colonnes d'appels à l'action<\/h2>",
             "new_lines": "wpautop",
             "esc_html": 0
         },
         {
-            "key": "field_5fb2cad44f5ca",
+            "key": "field_5fb2dd301e5da",
             "label": "",
             "name": "",
             "type": "accordion",
@@ -39,29 +39,9 @@
             "endpoint": 0
         },
         {
-            "key": "field_5fb2cae14f5cb",
-            "label": "Titre de la section",
-            "name": "info_columns_title",
-            "type": "text",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_only": 0,
-            "default_value": "",
-            "placeholder": "",
-            "prepend": "",
-            "append": "",
-            "maxlength": ""
-        },
-        {
-            "key": "field_5fb2ce7150402",
-            "label": "Blocs colonne de gauche",
-            "name": "info_columns_left_blocks",
+            "key": "field_5fb2dd351e5db",
+            "label": "Appels à l'action",
+            "name": "cta_columns",
             "type": "repeater",
             "instructions": "",
             "required": 0,
@@ -76,12 +56,12 @@
             "min": 0,
             "max": 0,
             "layout": "block",
-            "button_label": "Ajouter un bloc",
+            "button_label": "Ajouter un appel à l'action",
             "sub_fields": [
                 {
-                    "key": "field_5fb2ce8b50403",
+                    "key": "field_5fb2dd541e5dc",
                     "label": "Titre",
-                    "name": "info_block_title",
+                    "name": "cta_title",
                     "type": "text",
                     "instructions": "",
                     "required": 0,
@@ -99,30 +79,9 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5fb2ee18da911",
-                    "label": "Icône",
-                    "name": "info_block_icon",
-                    "type": "image_select",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "admin_only": 0,
-                    "get_image_method": "images_folder_path",
-                    "images_list": "",
-                    "images_folder_path": "dist\/images\/svg",
-                    "font_path": "",
-                    "return_format": "image_url",
-                    "allow_none": 1
-                },
-                {
-                    "key": "field_5fb2cec1694fc",
+                    "key": "field_5fb2e36d1dc8d",
                     "label": "Contenu",
-                    "name": "info_block_content",
+                    "name": "cta_content",
                     "type": "wysiwyg",
                     "instructions": "",
                     "required": 0,
@@ -138,28 +97,33 @@
                     "toolbar": "full",
                     "media_upload": 0,
                     "delay": 0
+                },
+                {
+                    "key": "field_5fb2e3a61dc8e",
+                    "label": "Image",
+                    "name": "cta_image",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "admin_only": 0,
+                    "return_format": "array",
+                    "preview_size": "medium",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
                 }
             ]
-        },
-        {
-            "key": "field_5fb2cea450404",
-            "label": "Contenu colonne de droite",
-            "name": "info_columns_right_content",
-            "type": "wysiwyg",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "admin_only": 0,
-            "default_value": "",
-            "tabs": "all",
-            "toolbar": "full",
-            "media_upload": 1,
-            "delay": 0
         }
     ],
     "location": [
@@ -167,7 +131,7 @@
             {
                 "param": "block",
                 "operator": "==",
-                "value": "acf\/info-columns"
+                "value": "acf\/cta-columns"
             }
         ]
     ],
@@ -179,5 +143,5 @@
     "hide_on_screen": "",
     "active": true,
     "description": "",
-    "modified": 1605561950
+    "modified": 1605559238
 }
