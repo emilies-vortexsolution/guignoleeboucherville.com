@@ -1,0 +1,95 @@
+.block-info-columns{
+  @include smart-prop('padding-top', sct-m);
+  background-image: url('../images/info-columns_bg.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.block-info-columns__inner{
+  @include __MAX(md){
+    width: 100%;
+  }
+}
+
+.block-info-columns__header{
+  text-align: center;
+  @include __MAX(md){
+    width: calc(100% - 40px);
+    margin-left:auto;
+    margin-right: auto;
+  }
+}
+
+.info-columns__columns{
+  @include quickflex(row, center, stretch, wrap);
+}
+
+.info-columns__col--left,
+.info-columns__col--right
+{
+  width: 100%;
+  flex: 0 0 auto;
+  padding: 20px;
+  @include smart-prop('padding-bottom', sct-m);
+  @include __MIN(md){
+    padding: 40px;
+    width: calc(50% - 30px);
+  }
+}
+
+.info-columns__col--left{
+  background-color: white;
+  @include __MIN(md){
+    margin-right: 30px;
+    padding-right: 80px;
+  }
+  @include __MIN(xl){
+    padding-right: 135px;
+  }
+}
+
+.info-columns__col--right{
+  @include __MIN(md){
+    margin-left: 30px;
+  }
+}
+
+.info-columns__block{
+  margin-bottom: 3rem;
+  @include quickflex(row, flex-start, flex-start, wrap);
+  @include __MIN(xxxs){
+    flex-wrap: nowrap;
+  }
+}
+
+.info-columns__block__col--icon{
+  width: auto;
+  flex: 0 0 auto;
+  margin-bottom: 1rem;
+  @include __MIN(xxxs){
+    margin-right: 20px;
+    margin-bottom: 0;
+  }
+
+  i{
+    color: $secondary;
+    font-style:normal;
+    font-size: 2.4rem;
+    @include __MIN(sm){
+      font-size: 4rem;
+    }
+  }
+}
+
+.info-columns__block__col--main{
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.info-columns__block__title{
+  display:block;
+  color: $secondary;
+  font: 700 1.8rem $font1;
+  font-style: italic;
+  margin-bottom: 1rem;
+}
