@@ -1,0 +1,81 @@
+.block-red-columns{
+  margin-top: 3rem;
+}
+
+.red-columns__columns{
+  @include quickflex(row, flex-start, flex-start, wrap);
+}
+
+// deux colonnes
+
+.red-columns__column{
+  width: 100%;
+  flex: 0 0 auto;
+  padding: 20px;
+  color: white;
+  background-color: $primary;
+  @include __MIN(md){
+    width: 50%;
+  }
+
+  > h3.red-columns__column__title{
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+}
+
+// premiere colonne //
+
+.red-columns__column:first-child{
+  background-color: $red-light;
+  @include __MIN(xl){
+    padding: 80px 50px 50px 50px;
+    position: relative;
+    z-index: 2;
+  }
+  @include __MIN(gen-alignwide){
+    padding-left: $alignwide-gutter;
+  }
+}
+
+// deuxieme colonne //
+
+.red-columns__column:last-child{
+  background-color: $red-dark;
+  @include __MIN(xl){
+    padding: 40px 40px 40px 80px;
+    position: relative;
+    top: 40px;
+    left: -40px;
+    z-index: 1;
+    &:after{
+      content: "";
+      display: block;
+      width: 40px;
+      height: 100%;
+      background-color: $red-dark;
+      position: absolute;
+      right: -40px;
+      top: 0;
+    }
+  }
+  @include __MIN(gen-alignwide){
+    padding-right: $alignwide-gutter;
+  }
+}
+
+// si une seule colonne
+
+.red-columns__column:only-child{
+  @include __MIN(md){
+    width: 100%;
+  }
+  @include __MIN(gen-aligndefault){
+    padding-left: $aligndefault-gutter;
+    padding-right: $aligndefault-gutter;
+  }
+  @include __MIN(gen-alignwide){
+    padding-left: $aligndefault-gutter;
+    padding-right: $aligndefault-gutter;
+  }
+}

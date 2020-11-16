@@ -13,13 +13,13 @@
   p {
     line-height: 1.5;
     margin: 0 0 1em 0;
-    
-    &:first-child{
-      @include smart-prop('margin-top', sct-m);
-    }
-    &:last-child{
-      @include smart-prop('margin-bottom', sct-m);
-    }
+  }
+
+  > p:first-child{
+    @include smart-prop('margin-top', sct-m);
+  }
+  > p:last-child{
+    @include smart-prop('margin-bottom', sct-m);
   }
 
   em,
