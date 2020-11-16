@@ -1,7 +1,9 @@
 .block-partners{
   @include smart-prop('padding-top', sct-m);
   @include smart-prop('padding-bottom', sct-m);
-  background-color: $background;
+  background-color: #ecedee;
+  position: relative;
+  overflow: hidden;
 }
 
 .block-partners__header{
@@ -10,6 +12,32 @@
   .block-partners__title{
     margin-top: 0;
   }
+}
+
+.block-partners__background--left{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 450px;
+  height: 462px;
+  background-image: url('../images/partners-bg_left.jpg');
+  background-repeat: no-repeat;
+}
+
+.block-partners__background--right{
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 450px;
+  height: 462px;
+  background-image: url('../images/partners-bg_right.jpg');
+  background-repeat: no-repeat;
+}
+
+.block-partners__inner{
+  position: relative;
 }
 
 .listing--partners{

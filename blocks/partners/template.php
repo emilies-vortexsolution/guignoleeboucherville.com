@@ -9,7 +9,9 @@ $partners  = get_posts(
 
 <?php if ( ! empty( $partners ) ) : ?>
   <section class="block-partners theme-block alignfull">
-    <div class="container">
+    <div class="block-partners__background--left" role="presentation"></div>
+    <div class="block-partners__background--right" role="presentation"></div>
+    <div class="block-partners__inner container">
       <?php if ( ! empty( $sct_title ) ) { ?>
         <div class="block-partners__header">
           <h2 class="block-partners__title"><?php echo esc_html( $sct_title ); ?></h2>

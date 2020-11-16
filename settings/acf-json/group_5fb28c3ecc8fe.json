@@ -1,0 +1,42 @@
+{
+    "key": "group_5fb28c3ecc8fe",
+    "title": "Bloc - En-tête vidéo",
+    "fields": [
+        {
+            "key": "field_5fb28c4e8c641",
+            "label": "",
+            "name": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "admin_only": 0,
+            "message": "<h2>En-tête vidéo<\/h2>",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/header-video"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "modified": 1605536862
+}

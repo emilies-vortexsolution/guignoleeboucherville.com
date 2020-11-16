@@ -3,6 +3,7 @@
 // (?) Fonts added with wp_enqueue in setup.php (?)
 $font1: 'Lato', sans-serif;
 $font2: 'Roboto', sans-serif;
+$font_title: 'Androgyne', 'Lato', serif;
 $icon: 'icomoon';
 
 ///// Font weight /////
@@ -17,6 +18,13 @@ $font2-thin: 400;
 $font2-normal: 400;
 $font2-bold: 700;
 $font2-bolder: 700;
+
+///// Font faces /////
+
+@font-face {
+  font-family: "Androgyne";
+  src: url('../fonts/AndrogyneMedium.otf');
+}
 
 ///// Icomoon /////
 $icomoon-font-path: '../../assets/icomoon/fonts';

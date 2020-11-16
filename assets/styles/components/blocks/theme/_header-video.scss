@@ -1,0 +1,26 @@
+.block-header-video{
+  @include smart-prop('padding-top', sct-m-small);
+  @include smart-prop('padding-bottom', sct-m-small);
+  background-color: #fcfcfc;
+  background-image: url('../images/header-video_bg.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: bottom;
+}
+
+.header-video__columns{
+  @include quickflex(row, center, center, wrap);
+  @include __MIN(md){
+    flex-wrap: nowrap;
+  }
+}
+
+.header-video__col--title{
+  width: 100%;
+  flex: 1 1 auto;
+
+  img{
+    max-width: 100%;
+    height: auto;
+  }
+}
