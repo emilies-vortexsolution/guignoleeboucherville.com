@@ -2,7 +2,9 @@
 $sct_title = ! empty( get_field( 'sct_title' ) ) ? get_field( 'sct_title' ) : __( 'Our partners', 'vtx' );
 $partners  = get_posts(
   array(
-    'post_type' => 'partner',
+    'post_type'   => 'partner',
+    'numberposts' => -1,
+    'order'       => 'ASC',
   )
 );
 ?>
