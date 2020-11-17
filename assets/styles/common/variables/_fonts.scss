@@ -2,7 +2,8 @@
 // font family
 // (?) Fonts added with wp_enqueue in setup.php (?)
 $font1: 'Lato', sans-serif;
-$font2: 'Roboto', sans-serif;
+$font2-regular: 'Berthold Akzidenz Grotesk Regular', 'Lato', sans-serif;
+$font2-bold: 'Berthold Akzidenz Grotesk Bold', 'Lato', sans-serif;
 $font_title: 'Androgyne', 'Lato', serif;
 $icon: 'icomoon';
 
@@ -13,17 +14,21 @@ $font1-normal: 400;
 $font1-bold: 700;
 $font1-bolder: 900;
 
-$font2-thinner: 400;
-$font2-thin: 400;
-$font2-normal: 400;
-$font2-bold: 700;
-$font2-bolder: 700;
-
 ///// Font faces /////
 
 @font-face {
   font-family: "Androgyne";
   src: url('../fonts/AndrogyneMedium.otf');
+}
+
+@font-face {
+  font-family: "Berthold Akzidenz Grotesk Bold";
+  src: url('../fonts/AkzidenzGroteskBE-Bold.otf');
+}
+
+@font-face {
+  font-family: "Berthold Akzidenz Grotesk Regular";
+  src: url('../fonts/AkzidenzGroteskBE-Regular');
 }
 
 ///// Icomoon /////

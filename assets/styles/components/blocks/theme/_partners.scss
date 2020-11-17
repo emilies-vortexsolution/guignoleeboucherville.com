@@ -15,14 +15,25 @@
 }
 
 .block-partners__background--left{
-  display: block;
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
-  width: 450px;
-  height: 462px;
+  width: 340px;
+  height: 369px;
   background-image: url('../images/partners-bg_left.jpg');
   background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top;
+
+  @include __MIN(md){
+    display: block;
+  }
+
+  @include __MIN(xl){
+    width: 450px;
+    height: 462px;
+  }
 }
 
 .block-partners__background--right{
@@ -30,10 +41,23 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 450px;
-  height: 462px;
+  width: 80%;
+  height: 65%;
   background-image: url('../images/partners-bg_right.jpg');
   background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: top;
+
+  @include __MIN(md){
+    width: 340px;
+    height: 369px;
+    background-position: bottom;
+  }
+
+  @include __MIN(xl){
+    width: 450px;
+    height: 462px;
+  }
 }
 
 .block-partners__inner{

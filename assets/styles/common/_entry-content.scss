@@ -13,6 +13,10 @@
   p {
     line-height: 1.5;
     margin: 0 0 1em 0;
+
+    &.has-large-font-size{
+      font-size: 1.8rem;
+    }
   }
 
   > p:first-child{

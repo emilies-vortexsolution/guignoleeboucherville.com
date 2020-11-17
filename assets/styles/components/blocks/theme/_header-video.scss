@@ -20,9 +20,12 @@
   flex: 1 1 auto;
 
   img{
-    max-width: 100%;
+    max-width: 60%;
     height: auto;
     margin: 0 auto;
+    @include __MIN(lg){
+      max-width: 100%;
+    }
   }
 }
 
@@ -111,7 +114,7 @@
   }
 
   span{
-    font: 700 1.4rem $font1;
+    font: 700 1.4rem $font2-bold;
     text-transform: uppercase;
   }
 }
