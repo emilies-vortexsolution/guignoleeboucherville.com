@@ -28,7 +28,7 @@ add_theme_support(
 // Wrap file block in a div
 
 function vtx_heading_decorated_style( $block_content, $block ) {
-  if ( 'core/heading' === $block['blockName'] ) {
+  if ( 'core/heading' === $block['blockName'] && 'is-style-decorated' === $block['attrs']['className'] ) {
     $content  = '<div class="block-heading decorated-heading">';
     $content .= get_file_contents_by_url( get_theme_asset_url( 'images/svg/guy-gauche.svg' ) );
     $content .= $block_content;

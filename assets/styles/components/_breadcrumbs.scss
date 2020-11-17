@@ -15,7 +15,7 @@
   font-size: 1.4rem;
 
   &::after {
-    content: '>';
+    content: '/';
     display: inline-block;
     margin: 0 0.7em 0 0.5em;
     color: inherit; 
@@ -35,12 +35,7 @@
   }
   
   a {
-    color: $text-link;
-    transition: color $gen-t;
-    
-    &:hover {
-      color: $text-link-hover;
-    }
+    @include underline-link-reverse( $primary, $primary );
   }
 }
 

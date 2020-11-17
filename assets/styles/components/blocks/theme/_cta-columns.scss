@@ -42,6 +42,9 @@
 
 .cta-columns__columns{
   @include quickflex(row, flex-start, stretch, wrap);
+  @include __MAX(md){
+    flex-direction: column-reverse;
+  }
   @include __MIN(xl){
     width: calc(100% - 60px);
     margin-left: auto;
@@ -57,7 +60,7 @@
   padding: 40px 20px;
   margin-bottom: 20px;
 
-  &:first-child{
+  &:last-child{
     margin-top: 20px;
   }
 
@@ -65,7 +68,7 @@
     padding: 70px 40px;
     width: calc(50% - 60px);
     margin: 30px;
-    &:first-child{
+    &:last-child{
       margin-top: 30px;
     }
   }

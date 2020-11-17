@@ -3,7 +3,7 @@
 }
 
 .red-columns__columns{
-  @include quickflex(row, flex-start, flex-start, wrap);
+  @include quickflex(row, flex-start, stretch, wrap);
 }
 
 // deux colonnes
