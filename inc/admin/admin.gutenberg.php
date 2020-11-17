@@ -40,3 +40,16 @@ function vtx_heading_decorated_style( $block_content, $block ) {
 }
 
 add_filter( 'render_block', 'vtx_heading_decorated_style', 10, 2 );
+
+// block list modifier
+function vtx_list_block_wrapper( $block_content, $block ) {
+  if ( 'core/list' === $block['blockName'] ) {
+    $content  = '<div class="wp-block-list wysiwyg">';
+    $content .= $block_content;
+    $content .= '</div>';
+    return $content;
+  }
+  return $block_content;
+}
+
+add_filter( 'render_block', 'vtx_list_block_wrapper', 10, 2 );

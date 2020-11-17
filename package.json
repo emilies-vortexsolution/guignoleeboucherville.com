@@ -73,6 +73,7 @@
     "wiredep": "^4.0.0"
   },
   "dependencies": {
+    "@fancyapps/fancybox": "^3.5.7",
     "fuse.js": "^6.4.3"
   }
 }

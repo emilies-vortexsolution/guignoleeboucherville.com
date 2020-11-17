@@ -80,6 +80,8 @@ function get_default_img_src( $img_format = '' ) {
   switch ( $img_format ) {
     case 'full':
           return Assets\asset_path( 'images/defaults/full.jpg' );
+    case 'video':
+          return Assets\asset_path( 'images/defaults/video.jpg' );
   }
 
   return Assets\asset_path( 'images/defaults/default.jpg' );

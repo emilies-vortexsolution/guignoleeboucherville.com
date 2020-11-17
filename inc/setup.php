@@ -121,6 +121,10 @@ function assets() {
 
   wp_enqueue_script( 'modernizr', Assets\asset_path( 'scripts/modernizr.js' ), array(), null, false );
   wp_enqueue_script( 'polyfills', Assets\asset_path( 'scripts/polyfills.js' ), array(), null, false );
+
+  // fancybox
+  wp_register_script( 'fancybox-js', Assets\asset_path( 'scripts/fancybox.js' ), array(), null, true );
+  wp_register_style( 'fancybox-css', Assets\asset_path( 'styles/fancybox.css' ), false, null );
   
   wp_enqueue_script( 'sage-js', Assets\asset_path( 'scripts/main.js' ) . '#async', array( 'jquery', 'wp-i18n' ), null, true );
 

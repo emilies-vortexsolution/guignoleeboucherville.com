@@ -58,6 +58,16 @@
             "files": [
                 "scripts/vtx-fselect.js"
             ]
+        },
+        "fancybox.js": {
+            "vendor": [
+                "node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.js"
+            ]
+        },
+        "fancybox.css": {
+            "vendor": [
+                "node_modules/@fancyapps/fancybox/dist/jquery.fancybox.min.css"
+            ]
         }
     },
     "config": {

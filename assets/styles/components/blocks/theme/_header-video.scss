@@ -22,5 +22,105 @@
   img{
     max-width: 100%;
     height: auto;
+    margin: 0 auto;
+  }
+}
+
+.header-video__col--video{
+  width: 100%;
+  flex: 0 0 auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  @include __MIN(md){
+    margin-top: 0;
+    margin-bottom: 0;
+    width: 50%;
+  }
+}
+
+.header-video__video{
+  display:block;
+  width: calc(100% - 20px);
+  margin-left: auto;
+}
+
+.header-video__video-thumbnail{
+  width: 100%;
+  height: 0;
+  padding-bottom: 60%;
+  position: relative;
+  z-index: 1;
+
+  &:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 20px;
+    left: -20px;
+    z-index: 0;
+    background-color: $yellow;
+  }
+}
+
+.header-video__video-thumbnail__image{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.header-video__video-thumbnail__overlay{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background-color: $primary;
+  opacity: 0.6;
+  pointer-events:none;
+}
+
+.header-video__video-thumbnail__inner{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  overflow: hidden;
+  @include quickflex(column, center, center, nowrap);
+  color: white;
+  padding: 20px;
+  transition: color $gen-t;
+
+  svg{
+    width: 62px;
+    height: 62px;
+    fill: white;
+    margin-bottom: 1.5rem;
+    transition: fill $gen-t;
+  }
+
+  span{
+    font: 700 1.4rem $font1;
+    text-transform: uppercase;
+  }
+}
+
+.header-video__video:hover{
+  .header-video__video-thumbnail__inner{
+    color: $text;
+    svg{
+      fill: $text;
+    }
   }
 }

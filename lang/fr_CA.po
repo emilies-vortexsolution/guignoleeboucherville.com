@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: vtx\n"
-"POT-Creation-Date: 2020-11-13 14:23-0500\n"
-"PO-Revision-Date: 2020-11-17 11:21-0500\n"
+"POT-Creation-Date: 2020-11-17 12:50-0500\n"
+"PO-Revision-Date: 2020-11-17 12:51-0500\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr_CA\n"
@@ -64,6 +64,46 @@ msgctxt "Block description"
 msgid "{BLOCK DESCRIPTION}"
 msgstr ""
 
+#: blocks/cta-columns/init.php:16
+msgctxt "Block name"
+msgid "Calls-to-action Columns"
+msgstr "Colonnes d'appels à l'action"
+
+#: blocks/cta-columns/init.php:17
+msgctxt "Block description"
+msgid "Columns of calls-to-action."
+msgstr "Colonnes d'appels à l'action."
+
+#: blocks/header-video/init.php:16
+msgctxt "Block name"
+msgid "Header Video"
+msgstr "En-tête vidéo"
+
+#: blocks/header-video/init.php:17
+msgctxt "Block description"
+msgid "A header section with video."
+msgstr "Un section d'en-tête avec une vidéo."
+
+#: blocks/header-video/template.php:14
+msgctxt "aria label video link"
+msgid "Play the video in a lightbox window."
+msgstr "Jouer la vidéo dans une fenêtre modale."
+
+#: blocks/header-video/template.php:19
+msgctxt "video thumbnail action"
+msgid "Play"
+msgstr "Jouer"
+
+#: blocks/info-columns/init.php:16
+msgctxt "Block name"
+msgid "Informational Columns"
+msgstr "Colonnes informationnelles"
+
+#: blocks/info-columns/init.php:17
+msgctxt "Block description"
+msgid "A two-columns section to display information."
+msgstr "Une section de deux colonnes qui affiche de l'information."
+
 #: blocks/partners/init.php:16
 msgctxt "Block name"
 msgid "Partners"
@@ -77,6 +117,16 @@ msgstr "Affiche les partenaires dans une grille."
 #: blocks/partners/template.php:2
 msgid "Our partners"
 msgstr "Nos partenaires"
+
+#: blocks/red-columns/init.php:16
+msgctxt "Block name"
+msgid "Red Columns"
+msgstr "Colonnes rouges"
+
+#: blocks/red-columns/init.php:17
+msgctxt "Block description"
+msgid "A section with two red columns."
+msgstr "Une section avec deux colonnes rouges."
 
 #: inc/acf/image-select-field-type/image-select-v5.php:29
 msgctxt "Acf field label"
@@ -1039,12 +1089,12 @@ msgstr ""
 msgid "Comments are closed."
 msgstr ""
 
-#: templates/footer.php:3
+#: templates/footer.php:4 templates/footer.php:6
 msgctxt "copyrights footer"
 msgid "All rights reserved."
 msgstr "Tous droits réservés."
 
-#: templates/footer.php:3
+#: templates/footer.php:10
 msgctxt "copyrights footer"
 msgid "Web agency"
 msgstr "Agence web"
@@ -1087,6 +1137,13 @@ msgstr ""
 #: templates/mobile-menu-toggle.php:4
 msgctxt "SR only burger menu label"
 msgid "Open site navigation"
+msgstr ""
+
+#. translators: %s is partner's name
+#: templates/partner/item.php:13
+#, php-format
+msgctxt "link to external website"
+msgid "Visit %s' website, opens in a new tab"
 msgstr ""
 
 #: templates/post/metas.php:2

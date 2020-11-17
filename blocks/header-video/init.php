@@ -17,6 +17,10 @@ if ( function_exists( 'acf_register_block_type' ) ) {
           'description'     => _x( 'A header section with video.', 'Block description', 'vtx' ),
           'render_callback' => 'render_custom_blocks_callback', //you should keep this that way.
           'align'           => '', // Set the default alignment for when the block is newly added in editor: “left”, “center”, “right”, “wide” or “full”
+          'enqueue_assets'  => function() {
+            wp_enqueue_script( 'fancybox-js' );
+            wp_enqueue_style( 'fancybox-css' );
+          },
           'mode'            => 'edit',
           'category'        => 'layout', // Core: common | formatting | layout | widgets | embed
           'icon'            => 'format-video', // WordPress’ Dashicons or Custom (see documentation)
