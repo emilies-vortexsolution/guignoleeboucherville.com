@@ -23,7 +23,9 @@ $url_label = sprintf( _x( 'Visit %s\' website, opens in a new tab', 'link to ext
 
   <div class="listing--partners__item__content">
     <?php if ( $p_logo ) { ?>
-      <img src="<?php echo esc_url( $p_logo ); ?>" alt="<?php echo esc_attr( $partner->post_title ); ?>">
+      <figure>
+        <img src="<?php echo esc_url( $p_logo ); ?>" alt="<?php echo esc_attr( $partner->post_title ); ?>">
+      </figure>
     <?php } else { ?>
       <span class="listing--partners__item__title"><?php echo esc_html( $partner->post_title ); ?></span>
     <?php } ?>

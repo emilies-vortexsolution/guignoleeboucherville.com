@@ -1,7 +1,7 @@
 <?php use Roots\Sage\Titles; ?>
 
 <div class="page-header">
-  <div class="container">
+  <div class="container page-header__inner">
     <h1><?php echo wp_kses_post( Titles\title() ); ?></h1>
   </div>
 </div>

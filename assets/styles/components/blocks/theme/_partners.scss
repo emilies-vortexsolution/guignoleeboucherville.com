@@ -91,10 +91,20 @@
   top: 0;
   left:0;
   @include quickflex(column, center, center, nowrap);
+  
+  figure{
+    max-width: calc(100% - 30px);
+    width: auto;
+    display:flex;
+    align-items: center;
+    height:100%;
+  }
 
   img{
-    max-width: calc(100% - 30px);
+    width:100%;
     height: auto;
+    margin:0;
+    vertical-align: middle;
   }
 }
 

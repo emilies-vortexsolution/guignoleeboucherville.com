@@ -23,6 +23,12 @@
     }
 
   }
+
+  a:not([class]),
+  a.rank-math-link
+  {
+    @include underline-link-reverse($text, $text);
+  }
   
   //////////////////////////////////////////////////////
   ////////////////// CUSTOMIZED LIST ///////////////////

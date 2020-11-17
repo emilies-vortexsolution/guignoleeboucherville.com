@@ -3,12 +3,18 @@
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: $secondary;
-  @include quickflex(row, center, center, nowrap);
-  text-align: center;
   color: white;
   @include __MIN(md){
     height: 300px;
     padding-top: 0;
     padding-bottom: 0;
+  }
+}
+
+.page-header__inner{
+  @include __MIN(md){
+    height: 100%;
+    @include quickflex(row, center, center, nowrap);
+    text-align: center;
   }
 }
