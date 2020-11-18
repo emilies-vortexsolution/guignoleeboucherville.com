@@ -11,7 +11,7 @@
           <?php } ?>
           <div class="wysiwyg">
             <?php echo wp_kses_post( get_sub_field( 'column_content' ) ); ?>
-          </div>  
+          </div>
         </div>
       <?php endwhile; ?>
     </div>

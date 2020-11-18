@@ -21,6 +21,14 @@
   svg{
     fill: #288BA0;
     width: 100%;
+    @include __MIN(md){
+      width: 200px;
+      height: 200px;
+    }
+    @include __MIN(xl){
+      width: 300px;
+      height: 300px;
+    }
   }
 }
 
